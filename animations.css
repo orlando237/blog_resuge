@@ -1,0 +1,558 @@
+/* Advanced Animation Styles */
+
+/* Logo Animation */
+.logo {
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-icon {
+  display: inline-block;
+  animation: rotate 3s ease-in-out infinite;
+}
+
+.logo-underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3498db, #2980b9);
+  animation: fillLine 2s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  0%,
+  100% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes fillLine {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+/* Word Animation */
+.word-animate {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: wordSlideIn 0.8s ease-out forwards;
+}
+
+.word-animate:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.word-animate:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.word-animate:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes wordSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating Text Animation */
+.floating-text {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Enhanced Button Animations */
+.pulse-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button-waves {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+
+.wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  animation: wave 2s infinite;
+  transform: translate(-50%, -50%);
+}
+
+.wave:nth-child(2) {
+  animation-delay: 0.7s;
+}
+.wave:nth-child(3) {
+  animation-delay: 1.4s;
+}
+
+@keyframes wave {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}
+
+/* Card Hover Animations */
+.hover-lift {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.hover-lift:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(52, 152, 219, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-lift:hover .card-glow {
+  opacity: 1;
+}
+
+/* Play Button Ripple Effect */
+.play-button {
+  position: relative;
+}
+
+.ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple 2s infinite;
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Section Title Animations */
+.slide-in-title {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-text {
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.5s forwards;
+}
+
+/* Tag Pulse Animation */
+.pulse-tag {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Bounce Animation */
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-3px);
+  }
+  60% {
+    transform: translateY(-1px);
+  }
+}
+
+/* Modal Slide In */
+.slide-in-modal {
+  animation: slideInModal 0.4s ease-out;
+}
+
+@keyframes slideInModal {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Enhanced Button Hover */
+.animated-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.animated-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.animated-button:hover::before {
+  left: 100%;
+}
+
+.animated-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+/* Audio Visualizer Animation */
+.audio-visualizer {
+  display: flex;
+  align-items: end;
+  gap: 2px;
+  height: 30px;
+  margin-right: 15px;
+}
+
+.audio-visualizer .bar {
+  width: 3px;
+  background: #3498db;
+  border-radius: 1px;
+  animation: audioBar 1.5s ease-in-out infinite;
+}
+
+.audio-visualizer .bar:nth-child(1) {
+  animation-delay: 0s;
+}
+.audio-visualizer .bar:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.audio-visualizer .bar:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.audio-visualizer .bar:nth-child(4) {
+  animation-delay: 0.9s;
+}
+.audio-visualizer .bar:nth-child(5) {
+  animation-delay: 1.2s;
+}
+
+@keyframes audioBar {
+  0%,
+  100% {
+    height: 5px;
+  }
+  50% {
+    height: 25px;
+  }
+}
+
+/* Floating Shapes Animation */
+.floating-shapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0.1;
+}
+
+.shape-1 {
+  width: 20px;
+  height: 20px;
+  background: #3498db;
+  border-radius: 50%;
+  top: 20%;
+  left: 10%;
+  animation: floatUpDown 6s ease-in-out infinite;
+}
+
+.shape-2 {
+  width: 15px;
+  height: 15px;
+  background: #2980b9;
+  border-radius: 50%;
+  top: 50%;
+  right: 20%;
+  animation: floatUpDown 8s ease-in-out infinite reverse;
+}
+
+.shape-3 {
+  width: 25px;
+  height: 25px;
+  background: #3498db;
+  transform: rotate(45deg);
+  top: 70%;
+  left: 70%;
+  animation: floatRotate 10s linear infinite;
+}
+
+.shape-4 {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  border-radius: 50%;
+  top: 30%;
+  right: 10%;
+  animation: floatUpDown 7s ease-in-out infinite;
+}
+
+.shape-5 {
+  width: 18px;
+  height: 18px;
+  background: #2980b9;
+  transform: rotate(45deg);
+  top: 80%;
+  left: 20%;
+  animation: floatRotate 9s linear infinite reverse;
+}
+
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes floatRotate {
+  0% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(180deg) translateY(-15px);
+  }
+  100% {
+    transform: rotate(360deg) translateY(0px);
+  }
+}
+
+/* Slide Counter Overlay */
+.slide-counter-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Enhanced Audio Player */
+.audio-player {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.audio-player audio {
+  flex: 1;
+  border-radius: 10px;
+}
+
+/* Responsive Animation Adjustments */
+@media (max-width: 768px) {
+  .word-animate {
+    display: block;
+    margin: 5px 0;
+  }
+
+  .floating-shapes .shape {
+    display: none;
+  }
+
+  .wave {
+    max-width: 100px;
+    max-height: 100px;
+  }
+}
+
+/* ===== MOBILE-FIRST RESPONSIVE ANIMATIONS ===== */
+
+/* Variables para animaciones responsivas */
+:root {
+  --animation-duration: 0.6s;
+  --animation-timing: ease-out;
+  --mobile-animation-duration: 0.3s;
+}
+
+/* Optimizaciones para dispositivos móviles */
+@media (max-width: 767px) {
+  :root {
+    --animation-duration: var(--mobile-animation-duration);
+  }
+  
+  /* Reducir complejidad de animaciones en móviles */
+  .floating-shapes .shape {
+    animation-duration: 4s;
+    opacity: 0.05;
+  }
+  
+  /* Animaciones más simples para cards en móvil */
+  .blog-card:hover,
+  .presentation-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Reducir efectos de partículas */
+  .particles-container {
+    opacity: 0.3;
+  }
+}
+
+/* Optimizaciones para dispositivos táctiles */
+.touch-device .hover-lift:hover {
+  transform: none;
+}
+
+.touch-device .hover-lift:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+/* Animaciones específicas para móviles */
+@media (max-width: 479px) {
+  .word-animate {
+    animation-delay: 0.1s;
+    animation-duration: 0.4s;
+  }
+  
+  .slide-in-title {
+    animation-duration: 0.5s;
+  }
+  
+  .fade-in-text {
+    animation-duration: 0.4s;
+  }
+}
+
+/* Mejorar rendimiento en móviles */
+.mobile-device * {
+  will-change: auto;
+}
+
+.mobile-device .floating-shapes {
+  will-change: transform;
+}
+
+.mobile-device .card-image {
+  will-change: transform;
+}
+
+/* Additional Ripple Effect for Clicks */
+@keyframes rippleEffect {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+

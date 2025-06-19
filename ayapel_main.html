@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Dark Stories of Ayapel - Daniel Samir Lopez Vergara</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1b4332;
+      min-height: 100vh;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated particles background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+          radial-gradient(circle at 20% 20%, rgba(27, 67, 50, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(196, 154, 0, 0.08) 0%, transparent 50%),
+          radial-gradient(circle at 40% 60%, rgba(27, 67, 50, 0.05) 0%, transparent 50%);
+      animation: drift 20s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(1deg); }
+      66% { transform: translate(-20px, 20px) rotate(-1deg); }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #2d5016 0%, #1b4332 50%, #40916c 100%);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(27, 67, 50, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, 
+          transparent 30%, 
+          rgba(196, 154, 0, 0.1) 50%, 
+          transparent 70%);
+      animation: shimmer 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: white;
+      animation: titleGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      0% { filter: drop-shadow(0 0 5px rgba(196, 154, 0, 0.3)); }
+      100% { filter: drop-shadow(0 0 15px rgba(196, 154, 0, 0.6)); }
+    }
+
+    .header .subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+      font-weight: 300;
+      color: #d0d0d0;
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header .authors {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #f7f3d3;
+      font-family: 'Playfair Display', serif;
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      animation: slideInUp 0.8s ease-out;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 16px rgba(27, 67, 50, 0.1);
+      border: 1px solid rgba(196, 154, 0, 0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, 
+          rgba(196, 154, 0, 0.2), 
+          rgba(64, 145, 108, 0.2), 
+          rgba(27, 67, 50, 0.2));
+      border-radius: 12px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(27, 67, 50, 0.15);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .audio-player {
+      background: linear-gradient(135deg, #2d5016 0%, #1b4332 100%);
+      color: white;
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 4px 16px rgba(27, 67, 50, 0.3); }
+      50% { box-shadow: 0 8px 32px rgba(27, 67, 50, 0.5); }
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-title .icon {
+      margin-right: 0.8rem;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      animation: iconBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    .audio-controls {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .audio-btn {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: white;
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      min-width: 70px;
+      font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .audio-btn:hover {
+      background: rgba(255,255,255,0.3);
+      border-color: rgba(255,255,255,0.6);
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    .audio-progress {
+      width: 100%;
+      height: 6px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .audio-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, rgba(196, 154, 0, 0.8) 0%, rgba(196, 154, 0, 1) 100%);
+      width: 0%;
+      transition: width 0.2s ease;
+      border-radius: 3px;
+    }
+
+    .audio-time-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .audio-time {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+      font-family: 'Inter', monospace;
+    }    .back-btn {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(196, 154, 0, 0.2);
+      color: white;
+      border: 1px solid rgba(196, 154, 0, 0.4);
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      display: inline-block;
+      backdrop-filter: blur(10px);
+      font-size: 0.9rem;
+      z-index: 10;
+    }
+
+    .back-btn:hover {
+      background: rgba(196, 154, 0, 0.4);
+      border-color: rgba(196, 154, 0, 0.6);
+      transform: translateY(-50%) translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(196, 154, 0, 0.3);
+    }
+
+    /* Legends Grid */
+    .legends-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .legend-card {
+      background: linear-gradient(135deg, rgba(196, 154, 0, 0.05) 0%, rgba(27, 67, 50, 0.05) 100%);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid rgba(196, 154, 0, 0.3);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .legend-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, 
+          rgba(196, 154, 0, 0.3), 
+          rgba(64, 145, 108, 0.3), 
+          rgba(27, 67, 50, 0.3));
+      border-radius: 12px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .legend-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 8px 24px rgba(27, 67, 50, 0.2);
+    }
+
+    .legend-card:hover::before {
+      opacity: 1;
+    }
+
+    .legend-icon {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+
+    .legend-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2d5016;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .legend-preview {
+      font-size: 0.9rem;
+      color: #1b4332;
+      text-align: center;
+      line-height: 1.5;
+      opacity: 0.8;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: modalFadeIn 0.3s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .modal-content {
+      background: #ffffff;
+      padding: 2.5rem;
+      border-radius: 16px;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      text-align: left;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+      position: relative;
+      animation: modalSlideIn 0.3s ease-out;
+      margin: 1rem;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        transform: translateY(-50px) scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: #c49a00;
+      transition: all 0.3s ease;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(196, 154, 0, 0.1);
+    }
+
+    .close-btn:hover {
+      background: rgba(196, 154, 0, 0.2);
+      transform: scale(1.1);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+    }
+
+    .modal-icon {
+      font-size: 2rem;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2d5016;
+      margin: 0;
+      text-align: center;
+      flex: 1;
+    }
+
+    .modal-description {
+      color: #1b4332;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #2d5016;
+      margin: 2rem 0 1rem 0;
+      text-align: center;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(196, 154, 0, 0.8) 0%, rgba(196, 154, 0, 0.2) 100%);
+      border-radius: 2px;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      color: #1b4332;
+      text-align: justify;
+    }
+
+    strong {
+      color: #2d5016;
+      font-weight: 700;
+    }
+
+    .author-note {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, rgba(196, 154, 0, 0.1) 0%, rgba(27, 67, 50, 0.1) 100%);
+      border-radius: 8px;
+      border-left: 4px solid #c49a00;
+      font-size: 0.9rem;
+      color: #40916c;
+      text-align: center;
+      font-style: italic;
+    }    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .back-btn {
+        position: static;
+        transform: none;
+        display: block;
+        margin: 0 auto 1rem auto;
+        width: fit-content;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        padding: clamp(0.5rem, 2vw, 0.6rem) clamp(1rem, 3vw, 1.2rem);
+      }
+      
+      .back-btn:hover {
+        transform: translateY(-3px) scale(1.08);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .header {
+        padding: 1.5rem;
+      }
+      
+      .header h1 {
+        font-size: 1.6rem;
+      }
+      
+      .legends-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .modal-content {
+        padding: 1.5rem;
+        margin: 0.5rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <button class="back-btn" onclick="window.location.href='../index.html'">
+        ← Back to Home
+      </button>
+      <h1>The Dark Stories of Ayapel</h1>
+      <div class="subtitle">Legends from the Colombian Swamplands</div>
+      <div class="authors">Daniel Samir Lopez Vergara</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Audio Player -->
+    <section class="card audio-player">
+      <h2 class="section-title">
+        <span class="icon">🎵</span>
+        Audio Narration
+      </h2>
+      <div class="audio-controls">
+        <button class="audio-btn" onclick="playAudio()" aria-label="Play audio">Play</button>
+        <button class="audio-btn" onclick="pauseAudio()" aria-label="Pause audio">Pause</button>
+        <button class="audio-btn" onclick="stopAudio()" aria-label="Stop audio">Stop</button>
+      </div>
+      <div class="audio-progress">
+        <div class="audio-progress-fill" id="audioProgress"></div>
+      </div>
+      <div class="audio-time-container">
+        <span class="audio-time" id="audioTimeRemaining">--:--</span>
+      </div>
+      <audio id="backgroundAudio">
+        <source src="ayapel.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+    </section>
+
+    <!-- Introduction -->
+    <section class="card">
+      <p><strong>Ayapel</strong>, a small town in Córdoba, Colombia, is surrounded by rivers, lakes, and the famous Ayapel swamp. But under its natural beauty lies a darker, older world full of mysterious stories. People in Ayapel <strong>used to tell</strong> legends about spirits, lights, monsters, and strange sounds coming from the water and the woods.</p>
+
+      <p>For many generations, these stories <strong>were shared</strong> by fishermen, grandparents, and travelers. They <strong>used to sit</strong> by the fire or on the riverbanks, telling what they had seen or heard. While they <strong>were telling</strong> these stories, the children <strong>were listening</strong> in silence, afraid and amazed.</p>
+    </section>
+
+    <!-- Legends Grid -->
+    <section class="card">
+      <h2>The Legendary Tales</h2>
+      <p style="text-align: center; margin-bottom: 2rem;">Click on each legend to discover its dark secrets and mysteries...</p>
+      
+      <div class="legends-grid">
+        <!-- The Mysterious Light -->
+        <div class="legend-card" onclick="openModal('mysteriousLightModal')">
+          <div class="legend-icon">💡</div>
+          <div class="legend-title">The Mysterious Light of the Swamp</div>
+          <div class="legend-preview">Eerie glowing lights that dance over the dark waters, luring the curious to their doom...</div>
+        </div>
+
+        <!-- El Mohán -->
+        <div class="legend-card" onclick="openModal('mohanModal')">
+          <div class="legend-icon">🧙‍♂️</div>
+          <div class="legend-title">The Swamp Guardian: El Mohán</div>
+          <div class="legend-preview">A hairy, powerful spirit who protects the swamp's treasures and punishes those who disturb them...</div>
+        </div>
+
+        <!-- Mermaid's Curse -->
+        <div class="legend-card" onclick="openModal('mermaidModal')">
+          <div class="legend-icon">🧜‍♀️</div>
+          <div class="legend-title">The Mermaid's Curse</div>
+          <div class="legend-preview">Beautiful sirens whose enchanting songs hide a deadly curse for those who listen...</div>
+        </div>
+
+        <!-- El Silbón -->
+        <div class="legend-card" onclick="openModal('silbonModal')">
+          <div class="legend-icon">👻</div>
+          <div class="legend-title">The Whistling Shadow: El Silbón</div>
+          <div class="legend-preview">A cursed soul whose haunting whistle echoes through the night, bringing terror to all who hear it...</div>
+        </div>
+
+        <!-- Haunted Well -->
+        <div class="legend-card" onclick="openModal('wellModal')">
+          <div class="legend-icon">🕳️</div>
+          <div class="legend-title">The Haunted Well</div>
+          <div class="legend-preview">An ancient well where voices from the depths call out to the living, seeking their company...</div>
+        </div>
+
+        <!-- Golden Snake -->
+        <div class="legend-card" onclick="openModal('snakeModal')">
+          <div class="legend-icon">🐍</div>
+          <div class="legend-title">The Golden Snake</div>
+          <div class="legend-preview">A magnificent serpent made of pure gold, guardian of ancient treasures hidden in the swamp...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="card">
+      <h2>The Power of Oral Tradition</h2>
+      <p>Each story tells a complete tale, based on oral tradition. These legends have been passed down through generations, evolving with each telling, yet maintaining their core essence of mystery and wonder. The swamplands of Ayapel have always been a place where reality and legend intertwine.</p>
+
+      <p>Are these stories true? Maybe. Maybe not. But in Ayapel, people still <strong>remember</strong> them. The old fishermen still speak in hushed tones about the lights they've seen dancing over the water. These stories are more than entertainment—they are the cultural DNA of a community.</p>
+
+    </section>
+  </main>
+
+  <!-- Modals -->
+  <!-- Mysterious Light Modal -->
+  <div id="mysteriousLightModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('mysteriousLightModal')">&times;</span>
+      <div class="modal-header">
+        <div class="modal-icon">💡</div>
+        <h2 class="modal-title">The Mysterious Light of the Swamp</h2>
+      </div>
+      <div class="modal-description">
+        <p><strong>For decades</strong>, fishermen in Ayapel used to talk about a strange light that appeared over the water at night. This light was not like a lantern or flashlight. It moved slowly and sometimes danced above the surface of the swamp, especially on dark, quiet nights.</p>
+        <p>People said the light <strong>used to appear</strong> when they were fishing alone or when they <strong>were rowing</strong> back to town. Some said the light was trying to show them something. Others believed it was a ghost or spirit protecting a treasure.</p>
+        <p>One night, a man named Pedro saw the light while he <strong>was fishing</strong>. He tried to follow it, but the more he rowed, the farther it moved. Suddenly, the light disappeared, and Pedro felt a cold wind surround him. He <strong>never forgot</strong> that night.</p>
+        <!-- Imagen opcional -->
+        <!-- <img src="images/swamp-light.jpg" alt="Mysterious light floating over Ayapel swamp"> -->
+        <p>Even today, some people claim to see the mysterious light. Scientists say it could be caused by gases in the swamp or reflections. But in Ayapel, many believe it is something more: a legend, a warning, or a magical sign from the past.</p>
+        <p class="author">
+          Author: Daniel Samir Lopez Vergara  
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- El Mohán Modal -->
+  <div id="mohanModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('mohanModal')">&times;</span>
+      <div class="modal-header">
+        <div class="modal-icon">🧙‍♂️</div>
+        <h2 class="modal-title">The Swamp Guardian: El Mohán</h2>
+      </div>
+      <div class="modal-description">
+        <p>Long ago, fishermen in Ayapel <strong>used to believe</strong> in a powerful creature called El Mohán. He <strong>lived</strong> under the swamp and <strong>protected</strong> the fish and plants. People <strong>said</strong> he <strong>had</strong> long hair, glowing eyes, and a beard made of moss. He <strong>was watching</strong> every movement in the water.</p>
+        <p>If someone <strong>was stealing</strong> fish or <strong> was throwing </strong> garbage into the swamp, El Mohán <strong>punished</strong> them. One day, a greedy man <strong>was taking</strong> too many fish. Suddenly, his net <strong>broke</strong>, and his canoe <strong>disappeared</Strong> with him. Only bubbles <strong>were rising</strong> from the water.</p>
+        <p>Old fishermen <strong>used to leave</strong> small gifts—like tobacco or food—on the shore to keep El Mohán happy. Today, some still believe he is there, waiting, watching.</p>
+        <p><strong>Would you fish in his swamp?</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mermaid Modal -->
+  <div id="mermaidModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('mermaidModal')">&times;</span>
+      <div class="modal-header">
+        <div class="modal-icon">🧜‍♀️</div>
+        <h2 class="modal-title">The Mermaid's Curse</h2>
+      </div>
+      <div class="modal-description">
+          <p>In Ayapel, people <strong>used to speak</strong> about a mermaid who lived in the deepest part of the swamp. She had long black hair and a sweet voice. She <strong>was singing</strong> in the early morning, calling young men from their boats.</p>
+          <p>One evening, while a young man <strong>was returning</strong> from fishing, he heard a voice singing his name. He <strong>followed</strong> the voice into the fog. His boat was found the next day, but he <strong>was never seen again</strong>.</p>
+          <!-- 🖼️ Imagen sugerida -->
+          <!-- <img src="images/mermaid-swamp.jpg" alt="Mermaid in the swamp"> -->
+          <p>People <strong>used to say</strong> that the mermaid was a girl who drowned many years ago. Now, she <strong>is looking</strong> for company in the dark waters.</p>
+          <p><em>Would you listen to her song?</em></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- El Silbón Modal -->
+  <div id="silbonModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('silbonModal')">&times;</span>
+      <div class="modal-header">
+        <div class="modal-icon">👻</div>
+        <h2 class="modal-title">The Whistling Shadow: El Silbón</h2>
+      </div>
+      <div class="modal-description">
+      <p>Though El Silbón is more famously known in other regions, his eerie tale was adopted by the people of Ayapel as well. The legend goes that on certain nights, a ghostly figure <strong>was seen wandering</strong> near lonely trails.</p>
+      <p>One stormy night, a traveler <strong>was making</strong> his way home when he heard a strange whistling in the distance. He <strong>used to say</strong> that the sound was soft when far, but grew louder as if the spirit was following him. Terrified, he <strong>ran</strong> until the whistling faded away.</p>
+      <!-- 🖼️ Imagen opcional -->
+      <!-- <img src="images/el-silbon.jpg" alt="Ghostly figure of El Silbón"> -->
+      <p>The legend of El Silbón reminded everyone that evil <strong>was lurking</strong> even when it seemed far away, and that one should never wander alone at night.</p>
+      <p><em>Would you be brave enough to walk those trails?</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Haunted Well Modal -->
+  <div id="wellModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('wellModal')">&times;</span>
+      <div class="modal-header">
+        <div class="modal-icon">🕳️</div>
+        <h2 class="modal-title">The Haunted Well</h2>
+      </div>
+      <div class="modal-description">
+      <p>In a small farming community near Ayapel, an old well was said to be cursed ever since a tragic accident. A child <strong>was playing</strong> near the well one afternoon when he <strong>fell in</strong> and <strong>disappeared</strong> without anyone noticing until it was too late.</p>
+      <p>The elders <strong>used to warn</strong> the children that the well was not an ordinary water source. They <strong>recalled</strong> that on moonlit nights, faint laughter and cries <strong>were heard</strong> coming from its depths. While some skeptics argued that it was just an echo of the wind, everyone in the village <strong>knew</strong> there was something sinister about it.</p>
+      <!-- 🖼️ Imagen opcional -->
+      <!-- <img src="images/haunted-well.jpg" alt="Old haunted well in Ayapel"> -->
+    <p>Over time, the well became a symbol of caution in the community, and parents <strong>used to tell</strong> their children to stay far away from it.</p>
+    <p><em>Would you dare to approach it under the moonlight?</em></p>
+      <p class="author">
+       Author: Daniel Samir Lopez Vergara  
+      </p>  
+      </div>
+    </div>
+  </div>
+
+  <!-- Golden Snake Modal -->
+  <div id="snakeModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('snakeModal')">&times;</span>
+      <div class="modal-header">
+        <div class="modal-icon">🐍</div>
+        <h2 class="modal-title">The Golden Snake</h2>
+      </div>
+      <div class="modal-description">
+      <p>Deep in the heart of the Ayapel swamp, legends <strong>told</strong> of a majestic golden snake that <strong>was believed</strong> to appear only to those with a pure heart. This creature <strong>used to be seen</strong> by humble fishermen and kind souls who respected nature.</p>
+      <p>One early morning, a young villager <strong>was walking</strong> along the swamp’s edge when he <strong>saw</strong> a glimmering movement among the reeds. Enthralled, he <strong>approached</strong> slowly, remembering that he <strong>used to be warned</strong> of the snake’s curse. Yet, as he <strong>got closer</strong>, the snake <strong>vanished</strong> in a flash of golden light.</p>
+        <!-- 🖼️ Imagen opcional -->
+          <!-- <img src="images/golden-snake.jpg" alt="The golden snake in the swamp"> -->
+  <p>Many locals <strong>believed</strong> that anyone who <strong>tried</strong> to capture the snake <strong>would be cursed</strong> forever. Hence, while the creature was a sign of hidden treasures and fortune, its presence <strong>reminded</strong> people to live with humility and respect.</p>
+  <p class="footer-note">
+    This is the end of our journey through the dark legends of Ayapel.  
+    <p class="author">
+        Author: Daniel Samir Lopez Vergara
+    </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Modal functions
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+          if (modal.style.display === 'flex') {
+            modal.style.display = 'none';
+          }
+        });
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Audio functions
+    const audio = document.getElementById('backgroundAudio');
+    const progressBar = document.getElementById('audioProgress');
+
+    function playAudio() {
+      audio.play().catch(e => console.log('Audio play error:', e));
+    }
+
+    function pauseAudio() {
+      audio.pause();
+    }
+
+    function stopAudio() {
+      audio.pause();
+      audio.currentTime = 0;
+      progressBar.style.width = '0%';
+      document.getElementById('audioTimeRemaining').textContent = '--:--';
+    }
+
+    // Audio progress tracking
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = progress + '%';
+        
+        const timeRemaining = audio.duration - audio.currentTime;
+        const minutes = Math.floor(timeRemaining / 60);
+        const seconds = Math.floor(timeRemaining % 60);
+        const timeRemainingElement = document.getElementById('audioTimeRemaining');
+        timeRemainingElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('audioProgress').style.width = '0%';
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      if (audio.duration) {
+        const minutes = Math.floor(audio.duration / 60);
+        const seconds = Math.floor(audio.duration % 60);
+        document.getElementById('audioTimeRemaining').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+    });
+
+    // Keyboard shortcuts for audio
+    document.addEventListener('keydown', function(e) {
+      if (e.key === ' ' && !e.target.closest('.modal')) {
+        e.preventDefault();
+        if (audio.paused) {
+          playAudio();
+        } else {
+          pauseAudio();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
