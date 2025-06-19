@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ffffff">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Past Events - English Learning Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="particles-container"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+<header class="header">
+    <div class="container">
+        <h1 class="logo">
+            <span class="logo-icon">📚</span>
+            Past Events: A vision of the Past
+        </h1>
+        
+        <!-- SOLO UN botón hamburguesa -->
+        <button class="mobile-menu-toggle" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        
+        <!-- SOLO UN menú de navegación -->
+        <nav class="nav">
+            <a href="#presentations" class="nav-link">
+                <i class="fas fa-presentation"></i>
+                Presentations
+            </a>
+            <a href="#blogs" class="nav-link">
+                <i class="fas fa-blog"></i>
+                Blogs
+            </a>
+            <a href="#about" class="nav-link">
+                <i class="fas fa-info-circle"></i>
+                About
+            </a>
+            <a href="#contact" class="nav-link">
+                <i class="fas fa-envelope"></i>
+                Contact
+            </a>
+        </nav>
+    </div>
+</header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">
+                    <span class="word-animate">Exploring</span>
+                    <span class="word-animate">Historical</span>
+                    <span class="word-animate">Moments</span>
+                </h2>
+                <p class="hero-subtitle floating-text">
+                    Discover fascinating past events through student presentations and engaging blog posts.
+                </p>
+                <button class="cta-button pulse-button" onclick="scrollToSection('presentations')">
+                    <span class="button-content">
+                        <i class="fas fa-rocket"></i>
+                        Start Exploring
+                    </span>
+                    <div class="button-waves">
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>    <!-- Presentations Section -->
+    <section id="presentations" class="section">
+        <div class="container">
+            <h2 class="section-title slide-in-title">Student Presentations</h2>
+            <p class="section-subtitle fade-in-text">Interactive slideshows with audio narration</p>
+            
+            <!-- Presentations Grid -->
+            <div class="presentations-grid">
+                <div class="presentation-item">
+                        <div class="presentation-card hover-lift" onclick="openPresentation('industrial-revolution')">
+                            <div class="card-image">
+                                <img src="focus-industrial-revolution.jpg" alt="Industrial Revolution">
+                                <div class="play-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                        <div class="ripple"></div>
+                                    </div>
+                                </div>
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Industrial Revolution</h3>
+                                <p class="card-description" style="text-align: justify;">An exploration of how machinery, manufacturing, and technological innovation transformed society and the modern world.</p>
+                                <div class="card-meta">
+                                    <span><i class="fas fa-images"></i> 8 slides</span>
+                                    <span><i class="fas fa-volume-up"></i> 2 min </span>
+                                    <span><i class="fas fa-user"></i> Jesus Olascuaga</span>
+                                </div>                        </div>
+                    </div>
+                </div>
+
+                <div class="presentation-item">
+                    <div class="presentation-card hover-lift" onclick="openPresentation('pompeii-destruction')">
+                            <div class="card-image">
+                                <img src="main-pompeii.jpg" alt="Destruction of Pompeii">
+                                <div class="play-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                        <div class="ripple"></div>
+                                    </div>
+                                </div>
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">The Destruction of Pompeii</h3>
+                                <p class="card-description" style="text-align: justify;">A tragic tale of the volcanic eruption that buried an ancient Roman city in ash and pumice.</p>
+                                <div class="card-meta">
+                                    <span><i class="fas fa-images"></i> 7 slides</span>
+                                    <span><i class="fas fa-volume-up"></i> 3 min </span>
+                                    <span><i class="fas fa-user"></i> Samuel & Benjamin</span>
+                                </div>                        </div>
+                    </div>
+                </div>
+
+                <div class="presentation-item">
+                    <div class="presentation-card hover-lift" onclick="openPresentation('palace-justice')">
+                            <div class="card-image">
+                                <img src="focus-palace.jpg" alt="Palace of Justice">
+                                <div class="play-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                        <div class="ripple"></div>
+                                    </div>
+                                </div>
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">The Siege of the Palace of Justice</h3>
+                                <p class="card-description" style="text-align: justify;">A dramatic event in Colombian history where justice and conflict collided in a tragic siege.</p>
+                                <div class="card-meta">
+                                    <span><i class="fas fa-images"></i> 9 slides</span>
+                                    <span><i class="fas fa-volume-up"></i> 2 min </span>
+                                    <span><i class="fas fa-user"></i> Jorge Martinez </span>
+                                </div>                        </div>
+                    </div>
+                </div>
+
+                <div class="presentation-item">
+                    <div class="presentation-card hover-lift" onclick="openPresentation('hitler')">
+                            <div class="card-image">
+                                <img src="focus-hitler.jpg" alt="Hitler">
+                                <div class="play-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                        <div class="ripple"></div>
+                                    </div>
+                                </div>
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">The Rise and Fall of Hitler</h3>
+                                <p class="card-description" style="text-align: justify;">An exploration of the events that led to the rise and eventual downfall of Adolf Hitler and his impact on world history.</p>
+                                <div class="card-meta">
+                                    <span><i class="fas fa-images"></i> 10 slides</span>
+                                    <span><i class="fas fa-volume-up"></i> 4 min </span>
+                                    <span><i class="fas fa-user"></i> Elmer Galvan </span>
+                                </div>                        </div>
+                    </div>
+                </div>
+
+                <div class="presentation-item">
+                    <div class="presentation-card hover-lift" onclick="openPresentation('bicycle')">
+                            <div class="card-image">
+                                <img src="focus-bicycle.jpg" alt="Lost Bicycle">
+                                <div class="play-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                        <div class="ripple"></div>
+                                    </div>
+                                </div>
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">The Lost Bicycle</h3>
+                                <p class="card-description" style="text-align: justify;">A mysterious event where a bicycle became the center of an unexpected adventure.</p>
+                                <div class="card-meta">
+                                    <span><i class="fas fa-images"></i> 5 slides</span>
+                                    <span><i class="fas fa-volume-up"></i> 2 min </span>
+                                    <span><i class="fas fa-user"></i> Julian Hoyos </span>
+                                </div>                        </div>
+                    </div>
+                </div>
+
+                <div class="presentation-item">
+                    <div class="presentation-card hover-lift" onclick="openPresentation('towers')">
+                            <div class="card-image">
+                                <img src="focus-towers.jpg" alt="Twin Towers">
+                                <div class="play-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                        <div class="ripple"></div>
+                                    </div>
+                                </div>
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">The Fall of the Twin Towers</h3>
+                                <p class="card-description" style="text-align: justify;">The global conflict that redefined international politics and marked the modern era.</p>
+                                <div class="card-meta">
+                                    <span><i class="fas fa-images"></i> 8 slides</span>
+                                    <span><i class="fas fa-volume-up"></i> 3 min </span>
+                                    <span><i class="fas fa-user"></i> Juan Berrio </span>
+                                </div>                        </div>
+                    </div>
+                </div>
+                
+                <div class="presentation-item">
+                    <div class="presentation-card hover-lift" onclick="openPresentation('ancient')">
+                            <div class="card-image">
+                                <img src="focus-wonder.jpg" alt="Seven Wonders of the World">
+                                <div class="play-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                        <div class="ripple"></div>
+                                    </div>
+                                </div>
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">The Seven Wonders of the World</h3>
+                                <p class="card-description" style="text-align: justify;">A journey through the ancient architectural and artistic marvels that continue to inspire awe and wonder.</p>
+                                <div class="card-meta">
+                                    <span><i class="fas fa-images"></i> 9 slides</span>
+                                    <span><i class="fas fa-volume-up"></i> 3 min</span>
+                                    <span><i class="fas fa-user"></i> Julian Morales</span>
+                                </div>                        </div>
+                    </div>
+                </div>
+
+                <div class="presentation-item">
+                    <div class="presentation-card hover-lift" onclick="openPresentation('korean-war')">
+                            <div class="card-image">
+                                <img src="focus-korean.png" alt="Korean War">
+                                <div class="play-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                        <div class="ripple"></div>
+                                    </div>
+                                </div>
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">The Korean War</h3>
+                                <p class="card-description" style="text-align: justify;">A forgotten conflict that divided a nation and shaped the Cold War dynamics in East Asia.</p>
+                                <div class="card-meta">
+                                    <span><i class="fas fa-images"></i> 7 slides</span>
+                                    <span><i class="fas fa-volume-up"></i> 4 min </span>
+                                    <span><i class="fas fa-user"></i> Maria & Isabela </span>
+                                </div>                        </div>
+                    </div>
+                </div>
+
+                <!-- Vikings Presentation Card -->
+                <div class="presentation-item">
+                    <div class="presentation-card hover-lift" onclick="openPresentation('vikings')">
+                        <div class="card-image">
+                            <img src="focus-vikings.jpg" alt="Vikings Photo">
+                            <div class="play-overlay">
+                                <div class="play-button">
+                                    <i class="fas fa-play"></i>
+                                    <div class="ripple"></div>
+                                </div>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Vikings</h3>
+                            <p class="card-description" style="text-align: justify;">An exploration of the legendary Norse seafarers, their culture, and their impact on history.</p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-images"></i> 5 slides</span>
+                                <span><i class="fas fa-volume-up"></i> 2 min </span>
+                                <span><i class="fas fa-user"></i> Julian Cogollo</span>
+                            </div>                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    <!-- Blogs Section -->
+    <section id="blogs" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title slide-in-title">Student Blog Posts</h2>
+            <p class="section-subtitle fade-in-text">In-depth articles with integrated audio content</p>
+            
+            <!-- Blogs Grid -->
+            <div class="blogs-grid">
+                <div class="blog-item">
+                        <article class="blog-card hover-lift" onclick="openBlog('cold')">
+                            <div class="blog-image">
+                                <img src="focus-cold.jpg" alt="Cold War">
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-category pulse-tag">History</span>
+                                    <span class="blog-date">March 15, 2024</span>
+                                </div>
+                                <h3 class="blog-title">The Cold War</h3>
+                                <p class="blog-excerpt" style="text-align: justify;">An intense geopolitical rivalry between the United States and the Soviet Union that shaped the modern world</p>
+                                <div class="blog-footer">
+                                    <span><i class="fas fa-clock"></i> 5 min</span>
+                                    <span class="blog-author"><i class="fas fa-user"></i> Orlando Osorio</span>
+                                    <span class="audio-available bounce"><i class="fas fa-headphones"></i> Audio included</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                <div class="blog-item">
+                    <article class="blog-card hover-lift" onclick="openBlog('camp-concentration')">
+                            <div class="blog-image">
+                                <img src="focus-camp.jpg" alt="Camp Concentration">
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-category pulse-tag">Ethical</span>
+                                    <span class="blog-date">March 10, 2024</span>
+                                </div>
+                                <h3 class="blog-title">Concentration Camp History </h3>
+                                <p class="blog-excerpt" style="text-align: justify;">Exploring the brave individuals who stood up against injustice and changed America...</p>
+                                <div class="blog-footer">
+                                    <span><i class="fas fa-clock"></i> 7 min </span>
+                                    <span class="blog-author"><i class="fas fa-user"></i>Andres Burgos</span>
+                                    <span class="audio-available bounce"><i class="fas fa-headphones"></i> Audio included</span>
+                                </div>
+                            </div>                        </article>
+                </div>
+
+                <div class="blog-item">
+                    <article class="blog-card hover-lift" onclick="openBlog('crisis-financial')">
+                            <div class="blog-image">
+                                <img src="focus-crisis.jpg" alt="Berlin Wall">
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-category pulse-tag">Events</span>
+                                    <span class="blog-date">March 5, 2024</span>
+                                </div>
+                                <h3 class="blog-title">The Financial Crisis of 2008</h3>
+                                <p class="blog-excerpt" style="text-align: justify;">An in-depth analysis of the global economic collapse and its lasting impact on society...</p>
+                                <div class="blog-footer">
+                                    <span><i class="fas fa-clock"></i> 6 min </span>
+                                    <span class="blog-author"><i class="fas fa-user"></i> Daniel Vergara </span>
+                                    <span class="audio-available bounce"><i class="fas fa-headphones"></i> Audio included</span>
+                                </div>
+                            </div>                        </article>
+                </div>
+
+                <div class="blog-item">
+                    <article class="blog-card hover-lift" onclick="openBlog('ayapel')">
+                            <div class="blog-image">
+                                <img src="focus-ayapel.jpg" alt="Moon Landing">
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-category pulse-tag">Myths</span>
+                                    <span class="blog-date">March 1, 2024</span>
+                                </div>
+                                <h3 class="blog-title">The Dark Stories of Ayapel</h3>
+                                <p class="blog-excerpt" style="text-align: justify;">Unveiling the mysterious tales and legends surrounding the enchanting region of Ayapel...</p>
+                                <div class="blog-footer">
+                                    <span><i class="fas fa-clock"></i> 10 min </span>
+                                    <span class="blog-author"><i class="fas fa-user"></i> Daniel Lopez </span>
+                                    <span class="audio-available bounce"><i class="fas fa-headphones"></i> Audio included</span>
+                                </div>
+                            </div>                        </article>
+                    </div>    
+
+        <!-- Moon Landing Blog Card-->
+
+                <div class="blog-item">
+                    <article class="blog-card hover-lift" onclick="openBlog('moon-landing')">
+                            <div class="blog-image">
+                                <img src="focus-moon.jpg" alt="Moon Landing">
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-category pulse-tag">Milestones</span>
+                                    <span class="blog-date">March 1, 2024</span>
+                                </div>
+                                <h3 class="blog-title">The Moon Landing</h3>
+                                <p class="blog-excerpt" style="text-align: justify;">A historic achievement that marked humanity's first steps on the lunar surface and expanded the horizons of space exploration.</p>
+                                <div class="blog-footer">
+                                    <span><i class="fas fa-clock"></i> 10 min</span>
+                                    <span class="blog-author"><i class="fas fa-user"></i> Cristian, Kevin & Keiner</span>
+                                    <span class="audio-available bounce"><i class="fas fa-headphones"></i> Audio included</span>
+                                </div>
+                            </div>                        </article>
+                    </div>    
+
+                <!-- Old Defense Blog Card -->
+
+                <div class="blog-item">
+                    <article class="blog-card hover-lift" onclick="openBlog('old-defense')">
+                            <div class="blog-image">
+                                <img src="focus-old.jpg" alt="Old Defense">
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-category pulse-tag">Tourism</span>
+                                    <span class="blog-date">March 1, 2024</span>
+                                </div>
+                                <h3 class="blog-title">The Old Defense of the City</h3>
+                                <p class="blog-excerpt" style="text-align: justify;">A fascinating look at the historical defenses that protected cities from invasions and attacks throughout history.</p>
+                                <div class="blog-footer">
+                                    <span><i class="fas fa-clock"></i> 8 min</span>
+                                    <span class="blog-author"><i class="fas fa-user"></i> Luis Palencia </span>
+                                    <span class="audio-available bounce"><i class="fas fa-headphones"></i> Audio included</span>
+                                </div>
+                            </div>                        </article>
+                    </div>
+
+                <div class="blog-item">
+                    <article class="blog-card hover-lift" onclick="openBlog('berlin-wall')">
+                            <div class="blog-image">
+                                <img src="focus-berlin.jpg" alt="Berlin Wall">
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-category pulse-tag">Events</span>
+                                    <span class="blog-date">March 1, 2024</span>
+                                </div>
+                                <h3 class="blog-title">The Fall of the Berlin Wall</h3>
+                                <p class="blog-excerpt" style="text-align: justify;">A defining moment in history that marked the end of division and the beginning of freedom during the Cold War era.</p>
+                                <div class="blog-footer">
+                                    <span><i class="fas fa-clock"></i> 6 min</span>
+                                    <span class="blog-author"><i class="fas fa-user"></i> Camilo Ruiz </span>
+                                    <span class="audio-available bounce"><i class="fas fa-headphones"></i> Audio included</span>
+                                </div>
+                            </div>                        </article>
+                    </div>
+
+                <div class="blog-item">
+                    <article class="blog-card hover-lift" onclick="openBlog('titanic')">
+                            <div class="blog-image">
+                                <img src="focus-titanic.jpg" alt="Titanic Tragedy">
+                                <div class="card-glow"></div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-category pulse-tag">Tradegy</span>
+                                    <span class="blog-date">March 20, 2024</span>
+                                </div>
+                                <h3 class="blog-title">The Titanic Tragedy</h3>
+                                <p class="blog-excerpt" style="text-align: justify;">A detailed account of the ill-fated voyage of the Titanic, exploring its legacy and lessons learned.</p>
+                                <div class="blog-footer">
+                                    <span><i class="fas fa-clock"></i> 8 min</span>
+                                    <span class="blog-author"><i class="fas fa-user"></i> Natalia Durango</span>
+                                    <span class="audio-available bounce"><i class="fas fa-headphones"></i> Audio included</span>
+                                </div>
+                            </div>
+                        </article>                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title slide-in-title">About Past Events</h2>
+                <p class="about-text floating-text">
+                    Welcome to our English learning platform focused on historical events. Here, students create 
+                    engaging presentations and write thoughtful blog posts about significant moments in history. 
+                    Each piece of content includes audio narration to enhance your learning experience and improve 
+                    your English listening skills.
+                </p>
+                <p class="about-text floating-text">
+                    Our mission is to make history come alive while helping you develop your English language 
+                    abilities through authentic, student-created content.
+                </p>
+            </div>
+        </div>    </section>    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title slide-in-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p class="contact-text floating-text">
+                        Have questions or feedback? We'd love to hear from you! Reach out through any of the following channels:
+                    </p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method hover-lift">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>englishblog@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method hover-lift">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+57 300 123 4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method hover-lift">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Colombia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Send us a message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required pattern="[A-Za-zÀ-ÿ\u00f1\u00d1\s]+" title="Name must contain only letters and spaces.">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required pattern="[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com|yahoo\.com|live\.com|icloud\.com|protonmail\.com)" title="Please enter a valid email with domains like @gmail.com, @outlook.com, @hotmail.com, etc.">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn animated-button">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                            <div class="button-waves">
+                                <div class="wave"></div>
+                                <div class="wave"></div>
+                                <div class="wave"></div>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://facebook.com/past-events-blog" class="social-link hover-lift" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://twitter.com/past-events-blog" class="social-link hover-lift" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="https://instagram.com/past-events-blog" class="social-link hover-lift" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://linkedin.com/company/past-events-blog" class="social-link hover-lift" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Past Events - English Learning Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Presentation Modals -->
+
+  <!-- Industrial Revolution Presentation Modal -->
+    <div id="presentation-modal-industrial-revolution" class="modal">
+        <div class="modal-content presentation-modal slide-in-modal">
+            <span class="close" onclick="closeModal('presentation-modal-industrial-revolution')">
+                <i class="fas fa-times"></i>
+            </span>
+            <div class="presentation-viewer">
+                <div class="slide-container">
+                    <img id="current-slide-industrial-revolution" src="/placeholder.svg" alt="Presentation slide" class="slide-image">
+                    <div class="slide-counter-overlay">
+                        <span id="current-slide-num-industrial-revolution">1</span> / <span id="total-slides-industrial-revolution">1</span>
+                    </div>
+                </div>
+                <div class="presentation-controls">
+                    <button class="nav-btn animated-button" onclick="previousSlidePresentation('industrial-revolution')">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button class="nav-btn animated-button" onclick="window.location.href='industrial-revolution/industrial-revolution.html'">
+                        <i class="fas fa-eye"></i>
+                        View More
+                    </button>
+                    <button class="nav-btn animated-button" onclick="nextSlidePresentation('industrial-revolution')">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="audio-controls-enhanced">
+                    <div class="audio-player">
+                        <div class="audio-visualizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <audio id="presentation-audio-industrial-revolution" controls>
+                            <source src="industrial-revolution/industrial-revolution.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pompeii Destruction Presentation Modal -->
+
+    <div id="presentation-modal-pompeii-destruction" class="modal">
+        <div class="modal-content presentation-modal slide-in-modal">
+            <span class="close" onclick="closeModal('presentation-modal-pompeii-destruction')">
+                <i class="fas fa-times"></i>
+            </span>
+            <div class="presentation-viewer">
+                <div class="slide-container">
+                    <img id="current-slide-pompeii-destruction" src="/placeholder.svg" alt="Presentation slide" class="slide-image">
+                    <div class="slide-counter-overlay">
+                        <span id="current-slide-num-pompeii-destruction">1</span> / <span id="total-slides-pompeii-destruction">1</span>
+                    </div>
+                </div>
+                <div class="presentation-controls">
+                    <button class="nav-btn animated-button" onclick="previousSlidePresentation('pompeii-destruction')">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button class="nav-btn animated-button" onclick="window.location.href='pompeii/pompeii_main.html'">
+                        <i class="fas fa-eye"></i>
+                        View More
+                    </button>
+                    <button class="nav-btn animated-button" onclick="nextSlidePresentation('pompeii-destruction')">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="audio-controls-enhanced">
+                    <div class="audio-player">
+                        <div class="audio-visualizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <audio id="presentation-audio-pompeii-destruction" controls>
+                            <source src="pompeii/pompeii.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Palace Justice Presentation Modal -->
+
+    <div id="presentation-modal-palace-justice" class="modal">
+        <div class="modal-content presentation-modal slide-in-modal">
+            <span class="close" onclick="closeModal('presentation-modal-palace-justice')">
+                <i class="fas fa-times"></i>
+            </span>
+            <div class="presentation-viewer">
+                <div class="slide-container">
+                    <img id="current-slide-palace-justice" src="/placeholder.svg" alt="Presentation slide" class="slide-image">
+                    <div class="slide-counter-overlay">
+                        <span id="current-slide-num-palace-justice">1</span> / <span id="total-slides-palace-justice">1</span>
+                    </div>
+                </div>
+                <div class="presentation-controls">
+                    <button class="nav-btn animated-button" onclick="previousSlidePresentation('palace-justice')">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button class="nav-btn animated-button" onclick="window.location.href='palace-justice/palace_main.html'">
+                        <i class="fas fa-eye"></i>
+                        View More
+                    </button>
+                    <button class="nav-btn animated-button" onclick="nextSlidePresentation('palace-justice')">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="audio-controls-enhanced">
+                    <div class="audio-player">
+                        <div class="audio-visualizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <audio id="presentation-audio-palace-justice" controls>
+                            <source src="palace-justice/palace.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hitler Presentation Modal -->
+    <div id="presentation-modal-hitler" class="modal">
+        <div class="modal-content presentation-modal slide-in-modal">
+            <span class="close" onclick="closeModal('presentation-modal-hitler')">
+                <i class="fas fa-times"></i>
+            </span>
+            <div class="presentation-viewer">
+                <div class="slide-container">
+                    <img id="current-slide-hitler" src="/placeholder.svg" alt="Presentation slide" class="slide-image">
+                    <div class="slide-counter-overlay">
+                        <span id="current-slide-num-hitler">1</span> / <span id="total-slides-hitler">1</span>
+                    </div>
+                </div>
+                <div class="presentation-controls">
+                    <button class="nav-btn animated-button" onclick="previousSlidePresentation('hitler')">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button class="nav-btn animated-button" onclick="window.location.href='hitler/hitler_main.html'">
+                        <i class="fas fa-eye"></i>
+                        View More
+                    </button>
+                    <button class="nav-btn animated-button" onclick="nextSlidePresentation('hitler')">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="audio-controls-enhanced">
+                    <div class="audio-player">
+                        <div class="audio-visualizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <audio id="presentation-audio-hitler" controls>
+                            <source src="hitler/hitler.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Bicycle presentation modal -->
+
+    <div id="presentation-modal-bicycle" class="modal">
+        <div class="modal-content presentation-modal slide-in-modal">
+            <span class="close" onclick="closeModal('presentation-modal-bicycle')">
+                <i class="fas fa-times"></i>
+            </span>
+            <div class="presentation-viewer">
+                <div class="slide-container">
+                    <img id="current-slide-bicycle" src="/placeholder.svg" alt="Presentation slide" class="slide-image">
+                    <div class="slide-counter-overlay">
+                        <span id="current-slide-num-bicycle">1</span> / <span id="total-slides-bicycle">1</span>
+                    </div>
+                </div>
+                <div class="presentation-controls">
+                    <button class="nav-btn animated-button" onclick="previousSlidePresentation('bicycle')">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button class="nav-btn animated-button" onclick="window.location.href='lost-bicycle/bicycle_main.html'">
+                        <i class="fas fa-eye"></i>
+                        View More
+                    </button>
+                    <button class="nav-btn animated-button" onclick="nextSlidePresentation('bicycle')">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="audio-controls-enhanced">
+                    <div class="audio-player">
+                        <div class="audio-visualizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <audio id="presentation-audio-bicycle" controls>
+                            <source src="lost-bicycle/bicycle.mp3" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Towers presentation modal -->
+    <div id="presentation-modal-towers" class="modal">
+        <div class="modal-content presentation-modal slide-in-modal">
+            <span class="close" onclick="closeModal('presentation-modal-towers')">
+                <i class="fas fa-times"></i>
+            </span>
+            <div class="presentation-viewer">
+                <div class="slide-container">
+                    <img id="current-slide-towers" src="/placeholder.svg" alt="Presentation slide" class="slide-image">
+                    <div class="slide-counter-overlay">
+                        <span id="current-slide-num-towers">1</span> / <span id="total-slides-towers">1</span>
+                    </div>
+                </div>
+                <div class="presentation-controls">
+                    <button class="nav-btn animated-button" onclick="previousSlidePresentation('towers')">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button class="nav-btn animated-button" onclick="window.location.href='twin-towers/towers_main.html'">
+                        <i class="fas fa-eye"></i>
+                        View More
+                    </button>
+                    <button class="nav-btn animated-button" onclick="nextSlidePresentation('towers')">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="audio-controls-enhanced">
+                    <div class="audio-player">
+                        <div class="audio-visualizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <audio id="presentation-audio-towers" controls>
+                            <source src="twin-towers/towers.ogg" type="audio/ogg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ancient Wonders presentation modal -->
+    <div id="presentation-modal-ancient" class="modal">
+        <div class="modal-content presentation-modal slide-in-modal">
+            <span class="close" onclick="closeModal('presentation-modal-ancient')">
+                <i class="fas fa-times"></i>
+            </span>
+            <div class="presentation-viewer">
+                <div class="slide-container">
+                    <img id="current-slide-ancient" src="/placeholder.svg" alt="Presentation slide" class="slide-image">
+                    <div class="slide-counter-overlay">
+                        <span id="current-slide-num-ancient">1</span> / <span id="total-slides-ancient">1</span>
+                    </div>
+                </div>
+                <div class="presentation-controls">
+                    <button class="nav-btn animated-button" onclick="previousSlidePresentation('ancient')">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button class="nav-btn animated-button" onclick="window.location.href='wonder_ancient/wonder_main.html'">
+                        <i class="fas fa-eye"></i>
+                        View More
+                    </button>
+                    <button class="nav-btn animated-button" onclick="nextSlidePresentation('ancient')">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="audio-controls-enhanced">
+                    <div class="audio-player">
+                        <div class="audio-visualizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <audio id="presentation-audio-ancient" controls>
+                            <source src="wonder_ancient/wonder.mp3" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Korean War Modal -->
+    <div id="presentation-modal-korean-war" class="modal">
+        <div class="modal-content presentation-modal slide-in-modal">
+            <span class="close" onclick="closeModal('presentation-modal-korean-war')">
+                <i class="fas fa-times"></i>
+            </span>
+            <div class="presentation-viewer">
+                <div class="slide-container">
+                    <img id="current-slide-korean-war" src="/placeholder.svg" alt="Presentation slide" class="slide-image">
+                    <div class="slide-counter-overlay">
+                        <span id="current-slide-num-korean-war">1</span> / <span id="total-slides-korean-war">1</span>
+                    </div>
+                </div>
+                <div class="presentation-controls">
+                    <button class="nav-btn animated-button" onclick="previousSlidePresentation('korean-war')">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button class="nav-btn animated-button" onclick="window.location.href='korean_war/korean_main.html'">
+                        <i class="fas fa-eye"></i>
+                        View More
+                    </button>
+                    <button class="nav-btn animated-button" onclick="nextSlidePresentation('korean-war')">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="audio-controls-enhanced">
+                    <div class="audio-player">
+                        <div class="audio-visualizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <audio id="presentation-audio-korean-war" controls>
+                            <source src="korean_war/korean.mp3" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Vikings Modal -->
+
+        <div id="presentation-modal-vikings" class="modal">
+            <div class="modal-content presentation-modal slide-in-modal">
+                <span class="close" onclick="closeModal('presentation-modal-vikings')">
+                    <i class="fas fa-times"></i>
+                </span>
+                <div class="presentation-viewer">
+                    <div class="slide-container">
+                        <img id="current-slide-vikings" src="/placeholder.svg" alt="Presentation slide" class="slide-image">
+                        <div class="slide-counter-overlay">
+                            <span id="current-slide-num-vikings">1</span> / <span id="total-slides-vikings">1</span>
+                        </div>
+                    </div>
+                    <div class="presentation-controls">
+                        <button class="nav-btn animated-button" onclick="previousSlidePresentation('vikings')">
+                            <i class="fas fa-chevron-left"></i>
+                            Previous
+                        </button>
+                        <button class="nav-btn animated-button" onclick="window.location.href='vikings/vikings_main.html'">
+                            <i class="fas fa-eye"></i>
+                            View More
+                        </button>
+                        <button class="nav-btn animated-button" onclick="nextSlidePresentation('vikings')">
+                            Next
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                </div>
+                <div class="audio-controls-enhanced">
+                    <div class="audio-player">
+                        <div class="audio-visualizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <audio id="presentation-audio-korean-war" controls>
+                            <source src="vikings/vikings.mp3" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <!-- Blog Modals with Enhanced View Complete Blog Styling -->
+
+    <!-- Cold War Blog Modal -->
+    <div id="blog-modal-cold" class="modal">
+        <div class="modal-content blog-modal slide-in-modal">
+            <span class="close" onclick="closeModal('blog-modal-cold')">
+                <i class="fas fa-times"></i>
+            </span>
+            <div id="blog-content-cold" class="blog-reader">
+                <!-- Cold War blog content will be loaded here -->
+            </div>
+            <div class="view-complete-blog">
+                <button class="view-blog-button" onclick="window.location.href='cold-war-blog/cold_main.html'">
+                    View Complete Blog
+                </button>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Camp Concentration Blog Modal -->
+    <div id="blog-modal-camp-concentration" class="modal">
+        <div class="modal-content blog-modal slide-in-modal">
+            <span class="close" onclick="closeModal('blog-modal-camp-concentration')">
+                <i class="fas fa-times"></i>
+            </span>
+            <div id="blog-content-camp-concentration" class="blog-reader">
+                <!-- Camp Concentration blog content will be loaded here -->
+            </div>
+            <div class="view-complete-blog">
+                <button class="view-blog-button" onclick="window.location.href='camp-concentration/camp_main.html'">
+                    View Complete Blog
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crisis Financial Blog Modal -->
+    <div id="blog-modal-crisis-financial" class="modal">
+        <div class="modal-content blog-modal slide-in-modal">
+            <span class="close" onclick="closeModal('blog-modal-crisis-financial')">
+                <i class="fas fa-times"></i>
+            </span>
+            <div id="blog-content-crisis-financial" class="blog-reader">
+                <!-- Crisis Financial blog content will be loaded here -->
+            </div>
+            <div class="view-complete-blog">
+                <button class="view-blog-button" onclick="window.location.href='crisis-finantial/crisis_main.html'">
+                    View Complete Blog
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ayapel Blog Modal -->
+    <div id="blog-modal-ayapel" class="modal">
+        <div class="modal-content blog-modal slide-in-modal">
+            <span class="close" onclick="closeModal('blog-modal-ayapel')">
+                <i class="fas fa-times"></i>
+            </span>
+            <div id="blog-content-ayapel" class="blog-reader">
+                <!-- Ayapel blog content will be loaded here -->
+            </div>
+            <div class="view-complete-blog">
+                <button class="view-blog-button" onclick="window.location.href='ayapel/ayapel_main.html'">
+                    View Complete Blog
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Moon Landing Blog Modal -->
+
+<div id="blog-modal-moon-landing" class="modal">
+    <div class="modal-content blog-modal slide-in-modal">
+        <span class="close" onclick="closeModal('blog-modal-moon-landing')">
+            <i class="fas fa-times"></i>
+        </span>
+        <div id="blog-content-moon-landing" class="blog-reader">
+            <!-- Moon Landing blog content will be loaded here -->
+        </div>
+        <div class="view-complete-blog">
+            <button class="view-blog-button" onclick="window.location.href='moon-landing/moon_main.html'">
+                View Complete Blog
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Old Defense Blog Modal -->
+<div id="blog-modal-old-defense" class="modal">
+    <div class="modal-content blog-modal slide-in-modal">
+        <span class="close" onclick="closeModal('blog-modal-old-defense')">
+            <i class="fas fa-times"></i>
+        </span>
+        <div id="blog-content-old-defense" class="blog-reader">
+            <!-- Old Defense blog content will be loaded here -->
+        </div>
+        <div class="view-complete-blog">
+            <button class="view-blog-button" onclick="window.location.href='old-defense/old_main.html'">
+                View Complete Blog
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Berlin Wall Blog Modal -->
+<div id="blog-modal-berlin-wall" class="modal">
+    <div class="modal-content blog-modal slide-in-modal">
+        <span class="close" onclick="closeModal('blog-modal-berlin-wall')">
+            <i class="fas fa-times"></i>
+        </span>
+        <div id="blog-content-berlin-wall" class="blog-reader">
+            <!-- Berlin Wall blog content will be loaded here -->
+        </div>
+        <div class="view-complete-blog">
+            <button class="view-blog-button" onclick="window.location.href='berlin-wall/berlin_main.html'">
+                View Complete Blog
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Titanic Blog Modal -->
+<div id="blog-modal-titanic" class="modal">
+    <div class="modal-content blog-modal slide-in-modal">
+        <span class="close" onclick="closeModal('blog-modal-titanic')">
+            <i class="fas fa-times"></i>
+        </span>
+        <div id="blog-content-titanic" class="blog-reader">
+            <!-- Titanic blog content will be loaded here -->
+        </div>
+        <div class="view-complete-blog">
+            <button class="view-blog-button" onclick="window.location.href='titanic/titanic_main.html'">
+                View Complete Blog
+            </button>
+        </div>
+    </div>
+</div>    <script src="particles.js"></script>
+    <script src="emailjs-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
