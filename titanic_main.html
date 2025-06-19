@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titanic: The Dream That Sank in the Atlantic</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #faf0e6;
+      color: #1a237e;
+      min-height: 100vh;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated particles background - tonos dorados y azul marino */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+          radial-gradient(circle at 20% 20%, rgba(26, 35, 126, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(218, 165, 32, 0.08) 0%, transparent 50%),
+          radial-gradient(circle at 40% 60%, rgba(139, 0, 0, 0.05) 0%, transparent 50%);
+      animation: drift 20s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(1deg); }
+      66% { transform: translate(-20px, 20px) rotate(-1deg); }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a237e 0%, #0d47a1 50%, #1565c0 100%);
+      color: #faf0e6;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(26, 35, 126, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, 
+          transparent 30%, 
+          rgba(218, 165, 32, 0.15) 50%, 
+          transparent 70%);
+      animation: shimmer 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #faf0e6;
+      animation: titleGlow 3s ease-in-out infinite alternate;
+      text-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+    }
+
+    @keyframes titleGlow {
+      0% { filter: drop-shadow(0 0 5px rgba(218, 165, 32, 0.3)); }
+      100% { filter: drop-shadow(0 0 15px rgba(218, 165, 32, 0.6)); }
+    }
+
+    .header .subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+      font-weight: 300;
+      color: #daa520;
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header .authors {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #f5f5dc;
+      font-family: 'Playfair Display', serif;
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 0 1rem;
+      animation: slideInUp 0.8s ease-out;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 16px rgba(26, 35, 126, 0.1);
+      border: 1px solid rgba(218, 165, 32, 0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, 
+          rgba(218, 165, 32, 0.2), 
+          rgba(26, 35, 126, 0.2), 
+          rgba(139, 0, 0, 0.2));
+      border-radius: 12px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(26, 35, 126, 0.15);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .audio-player {
+      background: linear-gradient(135deg, #1a237e 0%, #8b0000 100%);
+      color: #faf0e6;
+      animation: pulseGlow 4s ease-in-out infinite;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 4px 16px rgba(26, 35, 126, 0.3); }
+      50% { box-shadow: 0 8px 32px rgba(218, 165, 32, 0.4); }
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #faf0e6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-title .icon {
+      margin-right: 0.8rem;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: rgba(218, 165, 32, 0.3);
+      border-radius: 50%;
+      animation: iconBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    .audio-controls {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .audio-btn {
+      background: rgba(218, 165, 32, 0.2);
+      border: 1px solid rgba(218, 165, 32, 0.4);
+      color: #faf0e6;
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      min-width: 70px;
+      font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .audio-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(218, 165, 32, 0.3);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      transform: translate(-50%, -50%);
+    }
+
+    .audio-btn:hover::before {
+      width: 100%;
+      height: 100%;
+    }
+
+    .audio-btn:hover {
+      background: rgba(218, 165, 32, 0.3);
+      border-color: rgba(218, 165, 32, 0.6);
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    .audio-progress {
+      width: 100%;
+      height: 6px;
+      background: rgba(218, 165, 32, 0.3);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .audio-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, rgba(218, 165, 32, 0.8) 0%, rgba(218, 165, 32, 1) 100%);
+      width: 0%;
+      transition: width 0.2s ease;
+      border-radius: 3px;
+      animation: progressPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes progressPulse {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+
+    .audio-time-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .audio-time {
+      font-size: 0.8rem;
+      color: rgba(250, 240, 230, 0.9);
+      font-weight: 600;
+      font-family: 'Inter', monospace;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #1a237e;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      color: #1a237e;
+      text-align: justify;
+    }
+
+    .image-container {
+      width: 100%;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .image-container img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(26, 35, 126, 0.3);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid rgba(218, 165, 32, 0.2);
+    }
+
+    .image-container img:hover {
+      transform: scale(1.03) rotateY(2deg);
+      box-shadow: 0 16px 48px rgba(26, 35, 126, 0.4);
+      filter: brightness(1.05) contrast(1.05);
+      border-color: rgba(218, 165, 32, 0.5);
+    }
+
+    .back-btn {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(218, 165, 32, 0.2);
+        color: #faf0e6;
+        border: 1px solid rgba(218, 165, 32, 0.4);
+        border-radius: 8px;
+        padding: 0.6rem 1.2rem;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        display: inline-block;
+        backdrop-filter: blur(10px);
+    }
+
+    .back-btn:hover {
+        background: rgba(218, 165, 32, 0.4);
+        border-color: rgba(218, 165, 32, 0.6);
+        transform: translateY(-50%) translateY(-2px) scale(1.05);
+        box-shadow: 0 8px 20px rgba(218, 165, 32, 0.3);
+    }
+
+    strong {
+      color: #8b0000;
+      font-weight: 600;
+    }
+
+    em {
+      color: #1a237e;
+      font-style: italic;
+    }    /* Responsive Design */    @media (max-width: 1024px) {
+      .back-btn {
+        position: static !important;
+        transform: none !important;
+        display: block;
+        margin: 0 auto 1rem auto;
+        width: fit-content;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        padding: clamp(0.5rem, 2vw, 0.6rem) clamp(1rem, 3vw, 1.2rem);
+      }
+      
+      .back-btn:hover {
+        transform: translateY(-3px) scale(1.08) !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .header {
+        padding: 1.5rem;
+      }
+      
+      .header h1 {
+        font-size: 1.6rem;
+      }
+      
+      .card {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+   <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <button class="back-btn" onclick="window.location.href='../index.html'">
+                ← Back to Home
+            </button>
+            <h1>Titanic: The Dream That Sank in the Atlantic</h1>
+            <div class="subtitle">Like all erroneous decisions, it pays dearly</div>
+            <div class="authors">Natalia Durango </div>
+        </div>
+    </header>
+
+  <main class="container">
+    <!-- Audio Player -->
+    <section class="card audio-player">
+      <h2 class="section-title">
+        <span class="icon">🎵</span>
+        Audio Narration
+      </h2>
+      <div class="audio-controls">
+        <button class="audio-btn" onclick="playAudio()" aria-label="Play audio">Play</button>
+        <button class="audio-btn" onclick="pauseAudio()" aria-label="Pause audio">Pause</button>
+        <button class="audio-btn" onclick="stopAudio()" aria-label="Stop audio">Stop</button>
+      </div>
+      <div class="audio-progress">
+        <div class="audio-progress-fill" id="audioProgress"></div>
+      </div>
+      <div class="audio-time-container">
+        <span class="audio-time" id="audioTimeRemaining">--:--</span>
+      </div>
+      <audio id="backgroundAudio">
+        <source src="titanic.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+    </section>
+
+    <!-- Content -->
+    <section class="card">
+      <div class="image-container">
+        <img src="titanic-1.png" alt="Titanic on the Atlantic" />
+      </div>
+
+      <h2>Introduction</h2>
+      <p>In <strong>April 1912</strong>, the <strong>RMS Titanic</strong>, considered the largest and most luxurious ship of its time, set sail on its maiden voyage from <em>Southampton, England</em>, to <em>New York City</em>. Known as <strong>"unsinkable,"</strong> the Titanic ended up being the center of one of the most tragic maritime disasters of the 20th century.</p>
+
+      <p>The ship represented the pinnacle of <em>Edwardian luxury and engineering</em>, carrying passengers from all walks of life—from the wealthiest industrialists in first class to hopeful immigrants in third class, all seeking new opportunities in America.</p>
+
+      <h2>Construction and Design</h2>
+      <p>Built by the <strong>White Star Line</strong>, the Titanic was nearly <strong>270 meters long</strong> and featured luxuries never seen before on a ship. The vessel boasted <em>grand staircases, elegant dining rooms, a swimming pool, and even a gymnasium</em>.</p>
+
+      <p>The ship's design included <strong>16 watertight compartments</strong> and was engineered to survive flooding in up to four of them simultaneously. This revolutionary safety feature led to its reputation as the <em>"unsinkable ship"</em>—a claim that would prove tragically ironic.</p>
+
+      <div class="image-container">
+        <img src="titanic-2.png" alt="Interior design of the Titanic" />
+      </div>
+
+      <h2>Maiden Voyage</h2>
+      <p>On <strong>April 10, 1912</strong>, it departed from Southampton carrying over <strong>2,200 people</strong>, including crew and passengers from different social classes. The passenger manifest read like a <em>who's who</em> of society, including millionaires, celebrities, and hundreds of families seeking new lives in America.</p>
+
+      <p>The ship made stops in <strong>Cherbourg, France</strong> and <strong>Queenstown, Ireland</strong> before heading into the open Atlantic. The atmosphere aboard was festive, with passengers enjoying the ship's amenities and the promise of arriving in New York in just a few days.</p>
+
+      <h2>The Sinking</h2>
+      <p>On the night of <strong>April 14, 1912</strong>, at approximately <strong>11:40 PM</strong>, the Titanic hit an iceberg in the <em>North Atlantic</em>. The collision created a series of punctures along the ship's starboard side, flooding six compartments—two more than the ship was designed to survive.</p>
+
+      <p>Within <strong>2 hours and 40 minutes</strong>, the mighty vessel broke apart and sank, taking with it more than <strong>1,500 people</strong>. The tragedy was compounded by the insufficient number of lifeboats, which could accommodate only about half of those aboard.</p>
+
+      <p>The <em>heroism and cowardice</em> displayed during those final hours became legendary. The ship's band continued playing music to calm passengers, while many crew members and passengers helped others into lifeboats, knowing they themselves would not survive.</p>
+
+      <h2>Causes and Consequences</h2>
+      <p>The tragedy was blamed on <strong>excessive speed</strong> through an ice field, <strong>lack of sufficient lifeboats</strong>, and <em>human error</em> in navigation and communication. The nearby ship <strong>SS Californian</strong> failed to respond to distress signals, while the <strong>RMS Carpathia</strong> raced to rescue survivors.</p>
+
+      <p>After the disaster, <strong>maritime safety laws were revolutionized</strong>. The <em>International Convention for the Safety of Life at Sea (SOLAS)</em> was established, requiring sufficient lifeboats for all passengers and crew, 24-hour radio watch, and regular lifeboat drills.</p>
+
+      <h2>Legacy and Remembrance</h2>
+      <p>The Titanic disaster remains one of the most studied and remembered maritime tragedies in history. It exposed the <strong>class divisions of Edwardian society</strong>, as survival rates varied dramatically between passenger classes.</p>
+
+      <p>The wreck was discovered in <strong>1985</strong> by <em>Robert Ballard</em>, lying in two main pieces at a depth of about <strong>12,500 feet</strong>. Today, the Titanic serves as both a <em>time capsule of early 20th-century life</em> and a sobering reminder of human hubris in the face of nature's power.</p>
+    </section>
+  </main>
+
+  <script>
+    // Audio functions
+    const audio = document.getElementById('backgroundAudio');
+    const progressBar = document.getElementById('audioProgress');
+
+    function playAudio() {
+      audio.play().catch(e => console.log('Audio play error:', e));
+    }
+
+    function pauseAudio() {
+      audio.pause();
+    }
+
+    function stopAudio() {
+      audio.pause();
+      audio.currentTime = 0;
+      progressBar.style.width = '0%';
+      document.getElementById('audioTimeRemaining').textContent = '--:--';
+    }
+
+    // Audio progress tracking
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = progress + '%';
+        
+        const timeRemaining = audio.duration - audio.currentTime;
+        const minutes = Math.floor(timeRemaining / 60);
+        const seconds = Math.floor(timeRemaining % 60);
+        const timeRemainingElement = document.getElementById('audioTimeRemaining');
+        timeRemainingElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('audioProgress').style.width = '0%';
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      if (audio.duration) {
+        const minutes = Math.floor(audio.duration / 60);
+        const seconds = Math.floor(audio.duration % 60);
+        document.getElementById('audioTimeRemaining').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+      if (e.key === ' ') {
+        e.preventDefault();
+        if (audio.paused) {
+          playAudio();
+        } else {
+          pauseAudio();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
