@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Cold War</title>
+  <link rel="stylesheet" href="styles.css"/>  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700;900&family=Courier+Prime:wght@400;700&family=Crimson+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+  @import url('styles.css');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700;900&family=Courier+Prime:wght@400;700&family=Crimson+Pro:wght@300;400;600;700&display=swap');
+
+:root {
+  --paper-background: #f5f2e9;
+  --dark-charcoal: #2b2b2b;
+  --military-green: #4a5f39;
+  --vintage-beige: #e6dbc9;
+  --soviet-red: #cc0000;
+  --american-blue: #002868;
+  --document-white: #ffffff;
+  --newsprint-gray: #e0e0dc;
+  --typewriter-black: #333333;
+  --cold-steel: #71797E;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Paper texture and vintage effects */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes oldfilm {
+  0%, 100% { opacity: 0.97; }
+  50% { opacity: 0.85; }
+}
+
+@keyframes documentFade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Cold War document background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--newsprint-gray);
+  z-index: -2;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(90deg, rgba(204, 0, 0, 0.02) 50%, rgba(0, 40, 104, 0.02) 50%),
+    url("data:image/svg+xml,%3Csvg width='6' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.07'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px);
+  z-index: -1;
+  animation: oldfilm 8s infinite;
+}
+
+body {
+  font-family: 'Crimson Pro', serif;
+  color: var(--typewriter-black);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Film scratch effect */
+.shooting-star {
+  position: fixed;
+  width: 100%;
+  height: 1px;
+  z-index: -1;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.shooting-star:nth-child(1) {
+  top: 20%;
+  left: 0;
+  animation: film-scratch-horizontal 12s ease-out infinite;
+  animation-delay: 2s;
+}
+
+.shooting-star:nth-child(2) {
+  top: 0;
+  left: 40%;
+  width: 1px;
+  height: 100%;
+  animation: film-scratch-vertical 20s ease-out infinite;
+  animation-delay: 8s;
+}
+
+.shooting-star:nth-child(3) {
+  top: 70%;
+  left: 0;
+  animation: film-scratch-horizontal 15s ease-out infinite;
+  animation-delay: 5s;
+}
+
+@keyframes film-scratch-horizontal {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.4;
+  }
+  10% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.2;
+  }
+  20%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes film-scratch-vertical {
+  0% {
+    opacity: 0;
+  }
+  2% {
+    opacity: 0.3;
+  }
+  4%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Main container */
+.container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 2.5rem;
+  background: var(--vintage-beige);
+  border: none;
+  border-radius: 2px;
+  box-shadow: 
+    0 0 20px rgba(0, 0, 0, 0.3),
+    inset 0 0 1px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: documentFade 1.5s ease-in-out;
+}
+
+/* Create divided border effect representing the division during Cold War */
+.container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-left: 5px solid var(--soviet-red);
+  border-right: 5px solid var(--american-blue);
+  pointer-events: none;
+}
+
+/* Header styles */
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+header::after {
+  content: 'CLASSIFIED';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-5deg);
+  padding: 5px 20px;
+  background-color: var(--soviet-red);
+  color: white;
+  font-family: 'Courier Prime', monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  opacity: 0.8;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--typewriter-black);
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+.date {
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.2rem;
+  color: var(--typewriter-black);
+  margin-bottom: 1rem;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+/* Interactive tension meter indicator */
+.lunar-phase {
+  width: 100px;
+  height: 60px;
+  margin: 30px auto 10px;
+  position: relative;
+  background-color: var(--dark-charcoal);
+  border-radius: 5px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8), 0 2px 5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.lunar-phase::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: linear-gradient(90deg, var(--soviet-red) 30%, var(--military-green) 30%, var(--military-green) 70%, var(--american-blue) 70%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  z-index: 1;
+}
+
+.lunar-phase::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: calc(50% - 2px);
+  width: 4px;
+  height: 100%;
+  background-color: var(--document-white);
+  animation: tension-needle 5s ease-in-out infinite;
+  z-index: 2;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes tension-needle {
+  0%, 15% { transform: translateX(-20px); }
+  20%, 40% { transform: translateX(35px); }
+  45%, 75% { transform: translateX(-10px); }
+  80%, 100% { transform: translateX(10px); }
+}
+
+/* TABS STYLING */
+.tabs-container {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-bottom: none;
+  background: #2a2a2a;
+  padding: 4px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  margin-bottom: 2rem;
+}
+
+.tab-button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 0.8rem 1.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+  z-index: 2;
+  flex: 1;
+  text-transform: uppercase;
+}
+
+.tab-button:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tab-button.active {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.tab-indicator {
+  display: block;
+  position: absolute;
+  height: calc(100% - 8px);
+  width: calc(33.33% - 8px);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  left: 4px;
+  top: 4px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tab-button[data-tab="overview"].active ~ .tab-indicator {
+  background: linear-gradient(145deg, var(--american-blue) 0%, #003366 100%);
+  left: 4px;
+}
+
+.tab-button[data-tab="key-figures"].active ~ .tab-indicator {
+  background: linear-gradient(145deg, var(--soviet-red) 0%, #990000 100%);
+  left: calc(33.33% + 4px);
+}
+
+.tab-button[data-tab="gallery"].active ~ .tab-indicator {
+  background: linear-gradient(145deg, var(--military-green) 0%, #2a3f29 100%);
+  left: calc(66.66% + 4px);
+}
+
+.tab-content {
+  position: relative;
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeEffect 0.8s;
+  padding-top: 1.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 l100 0' stroke='%23aaa' stroke-width='0.5' stroke-dasharray='2,8' /%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 100px 20px;
+}
+
+@keyframes fadeEffect {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* Image styles */
+.image-block {
+  position: relative;
+  margin: 3rem 0;
+  overflow: hidden;
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transform: rotate(-1deg);
+}
+
+.image-block img {
+  width: 100%;
+  margin: 0;
+  transition: all 0.3s ease;
+  filter: grayscale(30%) sepia(10%);
+  border: 1px solid #ccc;
+}
+
+.image-block img:hover {
+  filter: grayscale(0%) sepia(0%);
+}
+
+.image-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5px,
+    rgba(0, 0, 0, 0.05) 5px,
+    rgba(0, 0, 0, 0.05) 10px
+  );
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.image-block:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.image-caption {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.85rem;
+  color: var(--typewriter-black);
+  margin-top: 1rem;
+  text-align: center;
+  font-style: italic;
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 5px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+/* Audio container */
+.audio-container {
+  background: var(--vintage-beige);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.audio-container::before {
+  content: 'HISTORICAL AUDIO';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--soviet-red);
+  color: white;
+  padding: 2px 15px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.audio-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(45deg, 
+      transparent, 
+      transparent 10px, 
+      rgba(0, 0, 0, 0.02) 10px, 
+      rgba(0, 0, 0, 0.02) 20px
+    );
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.audio-container p {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.9rem;
+  color: var(--typewriter-black);
+  margin: 1.5rem 0 1rem;
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.audio-container audio {
+  width: 100%;
+  height: 36px;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+  border: 2px solid var(--dark-charcoal);
+  overflow: hidden;
+}
+
+audio::-webkit-media-controls-panel {
+  position: absolute;
+  inset: 0px;
+  background: linear-gradient(to right,
+    var(--soviet-red) 0%,
+    var(--soviet-red) 22%,
+    var(--military-green) 20%,
+    var(--military-green) 40%,
+    var(--american-blue) 40%,
+    var(--american-blue) 60%,
+    var(--military-green) 60%,
+    var(--military-green) 80%,
+    var(--soviet-red) 80%,
+    var(--soviet-red) 100%
+  );
+  border-radius: -3px;
+  padding: 0;
+  margin: 0;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button {
+  background-color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+audio::-webkit-media-controls-play-button:hover,
+audio::-webkit-media-controls-mute-button:hover {
+  transform: scale(1.1);
+  background-color: #f0f0f0;
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  color: white;
+  font-family: 'Courier Prime', monospace;
+  font-size: 12px;
+}
+
+audio::-webkit-media-controls-timeline {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  height: 4px;
+  margin: 0 10px;
+}
+
+/* Audio player volume control adjustments */
+audio::-webkit-media-controls-volume-control-container {
+  padding: 0;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+audio::-webkit-media-controls-volume-slider {
+  padding: 0;
+  height: 4px;
+  margin: 0 8px;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+audio::-webkit-media-controls-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+audio::-webkit-media-controls-volume-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right,
+    rgba(255, 255, 255, 0.8) var(--value),
+    rgba(255, 255, 255, 0.2) var(--value)
+  );
+}
+
+/* Ensure proper alignment of all audio controls */
+audio::-webkit-media-controls-enclosure {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+
+audio::-webkit-media-controls-panel {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 4px;
+}
+
+/* Article styles */
+article {
+  position: relative;
+  margin: 3rem 0;
+}
+
+article::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--american-blue), var(--military-green), var(--soviet-red));
+  border-radius: 0;
+}
+
+article h2 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.4rem;
+  color: var(--typewriter-black);
+  margin: 2.5rem 0 1.8rem;
+  letter-spacing: 1px;
+  position: relative;
+  padding-left: 0;
+  text-align: center;
+  position: relative;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 10px;
+}
+
+article h2::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -15px;
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(to right, var(--soviet-red), var(--military-green), var(--american-blue));
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 2;
+}
+
+article p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--typewriter-black);
+  text-align: justify;
+  position: relative;
+  z-index: 1;
+  font-family: 'Crimson Pro', serif;
+}
+
+article p:first-of-type::first-letter {
+  font-family: 'Crimson Pro', serif;
+  float: left;
+  font-size: 3.5rem;
+  line-height: 0.65;
+  margin: 0.1em 0.1em 0.1em 0;
+  color: var(--soviet-red);
+  text-shadow: 0 0 5px var(--american-blue);
+}
+
+.quote {
+  font-family: 'Courier Prime', monospace;
+  color: var(--soviet-red);
+  font-weight: 700;
+  position: relative;
+  padding: 0 5px;
+  text-decoration: none;
+}
+
+@keyframes quotePulse {
+  0%, 100% { color: var(--soviet-red); }
+  50% { color: var(--american-blue); }
+}
+
+.quote:hover {
+  animation: quotePulse 2s infinite;
+}
+
+/* Fact box */
+.fact-box {
+  background: #f4f1e4;
+  padding: 3.5rem 2.5rem 2.5rem;
+  margin: 4rem 0;
+  position: relative;
+  border: 2px solid #000;
+  text-align: justify;
+  box-shadow: 
+    0 0 0 1px rgba(0, 0, 0, 0.1),
+    0 10px 30px rgba(0, 0, 0, 0.15);
+  overflow: visible;
+}
+
+/* Marca de agua */
+.fact-box::before {
+  content: 'CLASSIFIED';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-family: 'Courier Prime', monospace;
+  font-size: 4rem;
+  color: rgba(204, 0, 0, 0.08);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: 0.5rem;
+  font-weight: 700;
+}
+
+/* Sello superior */
+.fact-box::after {
+  content: 'TOP SECRET';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--soviet-red);
+  color: white;
+  padding: 6px 35px;
+  font-family: 'Courier Prime', monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  clip-path: polygon(3% 0%, 97% 0%, 100% 100%, 0% 100%);
+  box-shadow: 
+    0 3px 6px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.fact-box h2 {
+  color: var(--typewriter-black);
+  font-family: 'Roboto Slab', serif;
+  margin: 0 0 2rem;
+  padding: 0;
+  text-align: center;
+  font-size: 2rem;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 1rem;
+}
+
+.fact-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fact-box ul li {
+  margin-bottom: 1.5rem;
+  padding-left: 2.5rem;
+  position: relative;
+  font-family: 'Courier Prime', monospace;
+  line-height: 1.6;
+}
+
+.fact-box ul li::before {
+  content: '⦿';
+  position: absolute;
+  left: 0;
+  color: var(--soviet-red);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Efectos de clasificado */
+.fact-box ul li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 5%,
+    rgba(0, 0, 0, 0.1) 5%,
+    rgba(0, 0, 0, 0.1) 95%,
+    transparent 95%,
+    transparent 100%
+  );
+  bottom: -0.75rem;
+}
+
+/* KEY FIGURES TAB STYLES */
+.astronauts-container {
+  padding: 2rem 0;
+}
+
+.astronaut-header {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.2rem;
+  color: var(--typewriter-black);
+  text-align: center;
+  margin-bottom: 3rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.astronaut-header::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(to right, var(--soviet-red), var(--american-blue));
+  border-radius: 0;
+}
+
+.astronaut-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rem;
+  position: relative;
+  background: #fff;
+  border-radius: 0;
+  padding: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.astronaut-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.astronaut-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, 
+    var(--american-blue) 33%, 
+    var(--military-green) 33%, 
+    var(--military-green) 66%, 
+    var(--soviet-red) 66%);
+  z-index: 1;
+}
+
+.astronaut-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Circle image shape */
+.hexagon {
+  width: 220px;
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+  border: 5px solid #fff;
+  outline: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.hexagon:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hexagon img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.hexagon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 30%, rgba(0, 255, 217, 0.3), transparent 70%);
+  z-index: 1;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.hexagon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 20px rgba(0, 255, 217, 0.5);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hexagon:hover::after {
+  opacity: 1;
+}
+
+.hexagon:hover::before {
+  background: radial-gradient(circle at 30% 30%, rgba(0, 149, 255, 0.5), transparent 80%);
+}
+
+/* Create a special effect for Soviet figures */
+.astronaut-card:nth-child(3) .hexagon {
+  border-color: rgba(204, 0, 0, 0.3);
+  box-shadow: 0 0 30px rgba(204, 0, 0, 0.3);
+}
+
+.astronaut-card:nth-child(3) .hexagon:hover {
+  box-shadow: 0 0 40px rgba(204, 0, 0, 0.5);
+  border-color: rgba(204, 0, 0, 0.6);
+}
+
+.astronaut-card:nth-child(3) .hexagon::before {
+  background: radial-gradient(circle at 30% 30%, rgba(204, 0, 0, 0.3), transparent 70%);
+}
+
+.astronaut-card:nth-child(3) .hexagon:hover::before {
+  background: radial-gradient(circle at 30% 30%, rgba(204, 0, 0, 0.5), transparent 80%);
+}
+
+.astronaut-info {
+  text-align: center;
+}
+
+.astronaut-info h3 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.8rem;
+  color: var(--typewriter-black);
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.astronaut-title {
+  font-family: 'Courier Prime', monospace;
+  color: var(--military-green);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.astronaut-info p {
+  text-align: justify;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.astronaut-stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px dashed rgba(0, 0, 0, 0.2);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.5rem;
+  color: var(--military-green);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.stat-label {  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  color: var(--typewriter-black);
+  letter-spacing: 1px;
+}
+
+.astronaut-quote {
+  font-style: italic;
+  margin-top: 2rem;
+  position: relative;
+  padding: 0 2rem;
+}
+
+.astronaut-quote::before, .astronaut-quote::after {
+  content: '"';
+  font-family: 'Crimson Pro', serif;
+  font-size: 3rem;
+  color: rgba(0, 255, 217, 0.2);
+  position: absolute;
+}
+
+.astronaut-quote::before {
+  top: -20px;
+  left: 0;
+}
+
+.astronaut-quote::after {
+  bottom: -40px;
+  right: 0;
+}
+
+/* GALLERY TAB STYLES */
+.gallery-header {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.2rem;
+  color: var(--typewriter-black);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 8px solid white;
+  background-color: white;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: all 0.5s ease;
+  filter: grayscale(30%) sepia(10%);
+}
+
+.gallery-image.zoomed {
+  transform: scale(1.05);
+}
+
+.gallery-image:hover {
+  filter: grayscale(0%) sepia(0%);
+}
+
+.gallery-caption {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  color: var(--typewriter-black);
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  font-family: 'Crimson Pro', serif;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Timeline Slider */
+.timeline-container {
+  background: #fff;
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.timeline-header {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2rem;
+  color: var(--typewriter-black);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.timeline-slider-container {
+  position: relative;
+  padding: 0;
+  margin: 0 1rem;
+}
+
+.timeline-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.timeline-labels span {
+  font-family: 'Courier Prime', monospace;
+  font-size: 1rem;
+  color: var(--typewriter-black);
+  font-weight: bold;
+  position: relative;
+}
+
+.timeline-labels span::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 8px;
+  background: var(--typewriter-black);
+}
+
+/* Timeline bar */
+.timeline-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right,
+    var(--soviet-red) 0%,
+    var(--soviet-red) 20%,
+    var(--military-green) 20%,
+    var(--military-green) 40%,
+    var(--american-blue) 40%,
+    var(--american-blue) 60%,
+    var(--military-green) 60%,
+    var(--military-green) 80%,
+    var(--soviet-red) 80%,
+    var(--soviet-red) 100%
+  );
+  outline: none;
+  margin: 2rem 0;
+  border: none;
+}
+
+/* Timeline slider thumb */
+.timeline-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border: 2px solid var(--typewriter-black);
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border: 2px solid var(--typewriter-black);
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+/* Timeline event display */
+.timeline-event {
+  background: #fff;
+  padding: 1.5rem;
+  margin: 2rem 0 1rem;
+  border-left: 4px solid var(--military-green);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.timeline-event:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-event h4 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.5rem;
+  color: var(--typewriter-black);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-event p {
+  font-family: 'Crimson Pro', serif;
+  color: var(--typewriter-black);
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Timeline markers */
+.timeline-markers {
+  position: relative;
+  height: 20px;
+  width: 100%;
+  margin-top: -10px;
+}
+
+.marker {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--typewriter-black);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.marker::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 8px;
+  background: var(--typewriter-black);
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.marker:hover {
+  background: var(--military-green);
+  transform: translateX(-50%) scale(1.5);
+}
+
+/* Footer */
+footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  text-align: center;
+  position: relative;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.9rem;
+  color: var(--typewriter-black);
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(to right, 
+    var(--soviet-red), var(--american-blue));
+}
+
+footer p {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.9rem;
+  color: var(--typewriter-black);
+  opacity: 0.7;
+}
+
+footer .note {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  color: var(--soviet-red);
+  opacity: 0.8;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--vintage-beige);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--american-blue), var(--soviet-red));
+  border-radius: 0;
+}
+
+/* Media queries */
+@media (max-width: 992px) {
+  .container {
+    margin: 30px 15px;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+  
+  .astronaut-card {
+    flex-direction: column;
+  }
+  
+  .astronaut-image {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  article h2 {
+    font-size: 1.5rem;
+  }
+  
+  .lunar-phase {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .tab-button {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .gallery-container {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+    .astronaut-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .hexagon {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .astronaut-info h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .tab-button {
+    padding: 0.8rem;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+  
+  article::before {
+    left: -15px;
+  }
+  
+  article h2::before {
+    left: -7px;
+    width: 10px;
+    height: 10px;
+  }
+  
+  .gallery-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .astronaut-card {
+    padding: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+}
+
+/* Propaganda Section Styles */
+.propaganda-section {
+  margin: 4rem 0;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.propaganda-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(0, 0, 0, 0.1) 5px, rgba(0, 0, 0, 0.1) 10px);
+}
+
+.propaganda-container {
+  background: #f3f0e9;
+  padding: 3rem 2rem;
+  margin: 3rem 0;
+  position: relative;
+  border: none;
+  box-shadow: 
+    0 0 0 1px rgba(0, 0, 0, 0.1),
+    0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.propaganda-toggle {
+  display: flex;
+  width: 300px;
+  height: 50px;
+  margin: 0 auto 2rem;
+  background: #2a2a2a;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.propaganda-btn {
+  flex: 1;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: none;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.3s ease;
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.propaganda-btn:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.toggle-indicator {
+  position: absolute;
+  height: calc(100% - 8px);
+  width: calc(50% - 4px);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  left: 4px;
+  top: 4px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.propaganda-btn.active {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.propaganda-btn[data-side="usa"].active + .toggle-indicator {
+  background: linear-gradient(145deg, var(--american-blue) 0%, #003380 100%);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 3px rgba(255, 255, 255, 0.3);
+  left: 4px;
+}
+
+.propaganda-btn[data-side="ussr"].active ~ .toggle-indicator {
+  background: linear-gradient(145deg, var(--soviet-red) 0%, #b30000 100%);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 3px rgba(255, 255, 255, 0.3);
+  left: calc(50% + 0px);
+}
+
+.propaganda-display {
+  position: relative;
+}
+
+.propaganda-side {
+  display: none;
+  transition: opacity 0.3s ease;
+  animation: fadeEffect 0.5s;
+}
+
+.propaganda-side.active {
+  display: block;
+}
+
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  padding: 2rem 1rem;
+}
+
+@media (max-width: 768px) {
+  .poster-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .poster-frame {
+    height: 400px;
+  }
+}
+
+.poster-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.poster-frame {
+  width: 100%;
+  max-width: 320px;
+  height: 450px;
+  position: relative;
+  background: #f8f8f8;
+  padding: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: rotate(-2deg);
+  box-shadow: 
+    0 2px 15px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.poster-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, 
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 40%),
+    linear-gradient(-45deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      transparent 40%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.usa-frame {
+  border: 15px solid #fff;
+  outline: 2px solid var(--american-blue);
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      var(--american-blue),
+      var(--american-blue) 10px,
+      #003380 10px,
+      #003380 20px
+    );
+  transform: rotate(2deg);
+}
+
+.ussr-frame {
+  border: 15px solid #fff;
+  outline: 2px solid var(--soviet-red);
+  background:
+    repeating-linear-gradient(
+      45deg,
+      var(--soviet-red),
+      var(--soviet-red) 10px,
+      #b30000 10px,
+      #b30000 20px
+    );
+  transform: rotate(-2deg);
+}
+
+.poster-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: all 0.5s ease;
+  filter: sepia(20%) contrast(1.1);
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  top: -19px;
+  left: 20px;
+  background: var(--soviet-red);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.9rem;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 -1px rgba(255, 255, 255, 0.2);
+}
+
+.back-btn:hover {
+  background: var(--american-blue);
+  color: white;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    inset 0 -1px rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Back Button */
+@media (max-width: 1024px) {
+  .back-btn {
+    position: static;
+    transform: none;
+    display: block;
+    margin: 0 auto 1rem auto;
+    width: fit-content;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    padding: clamp(0.5rem, 2vw, 0.6rem) clamp(1rem, 3vw, 1.2rem);
+    top: auto;
+    left: auto;
+  }
+  
+  .back-btn:hover {
+    transform: translateY(-3px) scale(1.08);
+  }
+}
+
+.poster-frame:hover {
+  transform: translateY(-5px) rotate(0deg);
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.poster-frame:hover .poster-image {
+  filter: sepia(0%) contrast(1.2);
+}
+
+.poster-caption {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.85rem;
+  color: var(--typewriter-black);
+  margin-top: 1.5rem;
+  text-align: center;
+  max-width: 280px;
+  background: #fff;
+  padding: 0.8rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transform: rotate(1deg);
+  position: relative;
+}
+
+.usa-frame .poster-caption {
+  border-bottom: 3px solid var(--american-blue);
+}
+
+.ussr-frame .poster-caption {
+  border-bottom: 3px solid var(--soviet-red);
+}
+
+/* Etiquetas decorativas */
+.usa-frame::after {
+  content: 'AMERICAN ARCHIVES';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--american-blue);
+  color: white;
+  padding: 5px 15px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transform: rotate(2deg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 4;
+}
+
+.ussr-frame::after {
+  content: 'SOVIET ARCHIVES';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--soviet-red);
+  color: white;
+  padding: 5px 15px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transform: rotate(-2deg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 4;
+}
+</style>
+
+</head>
+<body>  <!-- Film scratches effect -->
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  
+  <main class="container">    <header>
+      <h1>THE COLD WAR</h1>
+      <p class="date">1947 - 1991</p>
+      <button class="back-btn" onclick="window.location.href='../index.html'">
+        ← Back
+      </button>
+      <div class="lunar-phase" title="Symbol of global tension" id="tension-meter"></div>
+    </header>
+
+    <!-- Navigation tabs -->
+    <div class="tabs-container">      <div class="tabs">
+        <button class="tab-button active" data-tab="overview">OVERVIEW</button>
+        <button class="tab-button" data-tab="key-figures">KEY FIGURES</button>
+        <button class="tab-button" data-tab="gallery">GALLERY</button>
+      </div>
+      
+      <div class="tab-indicator"></div>
+    </div>
+
+    <!-- Tab content -->
+    <div class="tab-content">      <!-- Tab 1: Overview (Default active) -->
+      <div class="tab-pane active" id="overview">
+        <section class="image-block">
+          <img src="berlin_wall.png" alt="Berlin Wall with soldiers on guard">
+          <p class="image-caption">The Berlin Wall - physical symbol of the Iron Curtain dividing East and West</p>          <div class="audio-container">
+            <p>LISTEN TO THE TRUE ESSENCE</p>
+            <audio controls>
+              <source src="audio_coldwar.mp3" type="audio/mp3">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </section>
+
+        <!-- Adding Cold War Timeline Slider -->
+        <div class="timeline-container">
+          <h3 class="timeline-header">COLD WAR TIMELINE</h3>
+          <div class="timeline-slider-container">
+            <div class="timeline-labels">
+              <span>1945</span>
+              <span>1955</span>
+              <span>1965</span>
+              <span>1975</span>
+              <span>1985</span>
+              <span>1991</span>
+            </div>
+            <input type="range" min="1945" max="1991" value="1962" class="timeline-slider" id="year-slider">
+            <div class="timeline-event" id="timeline-event">
+              <h4 id="event-year">1962</h4>
+              <p id="event-description">Cuban Missile Crisis brings the world to the brink of nuclear war</p>
+            </div>
+            <div class="timeline-markers">
+              <div class="marker" style="left: 0%" title="1945: End of WWII"></div>
+              <div class="marker" style="left: 8.7%" title="1949: NATO Formed"></div>
+              <div class="marker" style="left: 21.7%" title="1961: Berlin Wall Built"></div>
+              <div class="marker" style="left: 36.9%" title="1962: Cuban Missile Crisis"></div>
+              <div class="marker" style="left: 65.2%" title="1979: Soviet-Afghan War"></div>
+              <div class="marker" style="left: 95.6%" title="1989: Fall of Berlin Wall"></div>
+              <div class="marker" style="left: 100%" title="1991: Dissolution of USSR"></div>
+            </div>
+          </div>
+        </div>
+
+        <article>
+          <h2>A World Divided</h2>
+          <p>The Cold War was a period of geopolitical tension between the United States and the Soviet Union and their respective allies that began following World War II. From 1947 to 1991, this ideological and political struggle shaped global affairs, despite never escalating to direct large-scale fighting between the two superpowers. The conflict was instead characterized by proxy wars, economic competition, military buildups, espionage, propaganda campaigns, and technological competitions such as the Space Race.</p>
+          
+          <p>The term "Cold War" was first used by George Orwell in his essay "You and the Atomic Bomb" published in 1945. The Cold War emerged from the aftermath of World War II, as the victorious Allied Powers—primarily the United States, Soviet Union, United Kingdom, and France—established their spheres of influence. Winston Churchill captured the essence of this division in his famous <span class="quote">"Iron Curtain"</span> speech in 1946, declaring: <span class="quote">"From Stettin in the Baltic to Trieste in the Adriatic, an iron curtain has descended across the Continent."</span></p>
+          
+          <p>The early Cold War saw the formation of NATO in 1949 and the Warsaw Pact in 1955, consolidating the division of Europe into Western and Eastern blocs. Crises like the Berlin Blockade (1948-1949), the Korean War (1950-1953), and the Cuban Missile Crisis (1962) brought the world to the brink of nuclear conflict. The Cuban Missile Crisis, in particular, is often regarded as the closest the Cold War came to escalating into a full-scale nuclear war.</p>
+          
+          <p>The Cold War wasn't just about military confrontation; it was also an ideological struggle between capitalism and communism. Both superpowers attempted to spread their influence globally through economic aid, military assistance, and covert operations. This competition extended to cultural realms, science, and technology. The Space Race exemplified this rivalry, beginning with the Soviet launch of Sputnik in 1957 and culminating with the American Moon landing in 1969.</p>
+
+          <p>By the 1980s, economic pressures, political reforms under Soviet leader Mikhail Gorbachev, and rising democratic movements in Eastern Europe began to undermine the Soviet system. The fall of the Berlin Wall in 1989 symbolized the collapse of communist regimes across Eastern Europe. The Soviet Union itself dissolved in December 1991, marking the official end of the Cold War and the emergence of the United States as the world's sole superpower.</p>
+
+          <div class="fact-box">
+            <h2>Did You Know?</h2>
+            <ul>
+              <li>The term "Cold War" was coined because the conflict never escalated into direct, "hot" warfare between the United States and Soviet Union.</li>
+              <li>During the Cold War, the US and USSR built enough nuclear weapons to destroy the world many times over – a doctrine known as "Mutually Assured Destruction" (MAD).</li>
+              <li>The Berlin Wall stood for 28 years, from 1961 to 1989, dividing families and a city in two.</li>
+              <li>The "Hotline" direct communication link between Washington and Moscow was established after the Cuban Missile Crisis to prevent future misunderstandings.</li>
+              <li>The Soviet Union and the United States spent approximately $8 trillion and $6 trillion respectively on nuclear weapons programs during the Cold War.</li>
+            </ul>
+          </div>
+          
+          <!-- Propaganda Poster Interactive Section -->
+          <div class="propaganda-section">
+            <h2>Cold War Propaganda</h2>
+            <p>Propaganda was a powerful weapon during the Cold War. Both sides used posters, films, and other media to shape public opinion and promote their ideologies.</p>
+            
+            <div class="propaganda-container">
+              <div class="propaganda-toggle">
+                <button class="propaganda-btn active" data-side="usa">USA</button>
+                <div class="toggle-indicator"></div>
+                <button class="propaganda-btn" data-side="ussr">USSR</button>
+              </div>
+              
+              <div class="propaganda-display">
+                <div class="propaganda-side active" id="usa-propaganda">
+                  <div class="poster-grid">
+                    <div class="poster-item">
+                      <div class="poster-frame usa-frame">
+                        <img src="usa_propaganda1.jpg" alt="American Cold War Propaganda" class="poster-image">
+                      </div>
+                      <p class="poster-caption">"Civil Defense protects against atomic attack" - 1950s American poster</p>
+                    </div>
+                    <div class="poster-item">
+                      <div class="poster-frame usa-frame">
+                        <img src="usa_propaganda2.jpg" alt="American Cold War Propaganda" class="poster-image">
+                      </div>
+                      <p class="poster-caption">"Freedom will prevail" - American anti-communist poster</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="propaganda-side" id="ussr-propaganda">
+                  <div class="poster-grid">
+                    <div class="poster-item">
+                      <div class="poster-frame ussr-frame">
+                        <img src="ussr_propaganda1.jpg" alt="Soviet Cold War Propaganda" class="poster-image">
+                      </div>
+                      <p class="poster-caption">"Glory to the Soviet people" - 1960s Soviet poster</p>
+                    </div>
+                    <div class="poster-item">
+                      <div class="poster-frame ussr-frame">
+                        <img src="ussr_propaganda2.jpg" alt="Soviet Cold War Propaganda" class="poster-image">
+                      </div>
+                      <p class="poster-caption">"Peace to the World" - Soviet propaganda poster</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <section class="image-block">
+          <img src="nuclear_test.jpg" alt="Nuclear test explosion">
+          <p class="image-caption">Nuclear testing during the arms race between superpowers</p>
+        </section>
+      </div>      <!-- Tab 2: Key Figures -->
+      <div class="tab-pane" id="key-figures">
+        <div class="astronauts-container">
+          <h2 class="astronaut-header">KEY FIGURES OF THE COLD WAR</h2>
+          
+          <div class="astronaut-card">
+            <div class="astronaut-image">
+              <div class="hexagon">
+                <img src="kennedy.jpg" alt="John F. Kennedy">
+              </div>
+            </div>
+            <div class="astronaut-info">
+              <h3>JOHN F. KENNEDY</h3>
+              <p class="astronaut-title">35TH U.S. PRESIDENT (1961-1963)</p>
+              <p>John Fitzgerald Kennedy (May 29, 1917 – November 22, 1963) was an American politician who served as the 35th president of the United States. His presidency during a critical period of the Cold War was marked by high tensions with the Soviet Union.</p>
+              <p>Kennedy navigated several major crises, most notably the Cuban Missile Crisis of 1962, which is widely considered the closest the world came to nuclear war. His diplomatic approach to the crisis led to the installation of a direct hotline between Washington and Moscow.</p>
+              <p>He also established initiatives like the Peace Corps and the Alliance for Progress, while making the bold commitment to put a man on the moon before the end of the decade—a goal achieved after his assassination.</p>
+              <div class="astronaut-stats">
+                <div class="stat">
+                  <span class="stat-number">43</span>
+                  <span class="stat-label">AGE AT INAUGURATION</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">1961</span>
+                  <span class="stat-label">BERLIN WALL CRISIS</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">1962</span>
+                  <span class="stat-label">CUBAN MISSILE CRISIS</span>
+                </div>
+              </div>
+              <p class="astronaut-quote"><span class="quote">"Ask not what your country can do for you—ask what you can do for your country."</span></p>
+            </div>
+          </div>
+          
+          <div class="astronaut-card">
+            <div class="astronaut-image">
+              <div class="hexagon">
+                <img src="khrushchev.jpg" alt="Nikita Khrushchev">
+              </div>
+            </div>
+            <div class="astronaut-info">
+              <h3>NIKITA KHRUSHCHEV</h3>
+              <p class="astronaut-title">SOVIET PREMIER (1958-1964)</p>
+              <p>Nikita Sergeyevich Khrushchev (April 15, 1894 – September 11, 1971) led the Soviet Union during part of the Cold War as First Secretary of the Communist Party and Premier. He was known for his policy of "peaceful coexistence" with the West.</p>
+              <p>Khrushchev initiated de-Stalinization and relative liberalization within the Soviet Union. However, he also oversaw the Soviet response to the U-2 spy plane incident and the construction of the Berlin Wall, and brought the world to the brink of nuclear war during the Cuban Missile Crisis.</p>
+              <p>Under his leadership, the Soviet Union achieved notable successes in the Space Race, including launching the first satellite (Sputnik) and the first human (Yuri Gagarin) into space.</p>
+              <div class="astronaut-stats">
+                <div class="stat">
+                  <span class="stat-number">1956</span>
+                  <span class="stat-label">SECRET SPEECH</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">1957</span>
+                  <span class="stat-label">SPUTNIK LAUNCH</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">1961</span>
+                  <span class="stat-label">BERLIN CRISIS</span>
+                </div>
+              </div>
+              <p class="astronaut-quote"><span class="quote">"We will bury you!" (Referring to the Soviet Union's belief that communism would outlast capitalism)</span></p>
+            </div>
+          </div>
+          
+          <div class="astronaut-card">
+            <div class="astronaut-image">
+              <div class="hexagon">
+                <img src="gorbachev.jpg" alt="Mikhail Gorbachev">
+              </div>
+            </div>
+            <div class="astronaut-info">
+              <h3>MIKHAIL GORBACHEV</h3>
+              <p class="astronaut-title">LAST LEADER OF THE USSR (1985-1991)</p>
+              <p>Mikhail Sergeyevich Gorbachev (March 2, 1931 – August 30, 2022) was the final leader of the Soviet Union whose policies of glasnost (openness) and perestroika (restructuring) contributed to the end of the Cold War and dissolution of the USSR.</p>
+              <p>Gorbachev sought to reform the stagnating Communist system by introducing political and economic freedoms. He improved relations with the West, working with U.S. President Ronald Reagan to reduce nuclear arms through the INF Treaty of 1987.</p>
+              <p>His policies unintentionally led to the fall of the Berlin Wall in 1989 and revolutions throughout Eastern Europe. By 1991, the Soviet Union had dissolved, marking the end of the Cold War with Gorbachev's resignation on December 25, 1991.</p>
+              <div class="astronaut-stats">
+                <div class="stat">
+                  <span class="stat-number">1985</span>
+                  <span class="stat-label">TOOK POWER</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">1987</span>
+                  <span class="stat-label">INF TREATY</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">1990</span>
+                  <span class="stat-label">NOBEL PEACE PRIZE</span>
+                </div>
+              </div>
+              <p class="astronaut-quote"><span class="quote">"If not me, who? And if not now, when?"</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- Tab 3: Gallery -->
+      <div class="tab-pane" id="gallery">
+        <h2 class="gallery-header">COLD WAR GALLERY</h2>
+        <div class="gallery-container">
+          <div class="gallery-item">
+            <img src="berlin_wall_graffiti.jpg" alt="Cold War Era" class="gallery-image">
+            <div class="gallery-caption">The Berlin Wall with graffiti</div>
+          </div>
+          <div class="gallery-item">
+            <img src="cuban_missile.jpg" alt="Cold War Era" class="gallery-image">
+            <div class="gallery-caption">Cuban Missile Crisis reconnaissance photo</div>
+          </div>
+          <div class="gallery-item">
+            <img src="space_race.jpg" alt="Cold War Era" class="gallery-image">
+            <div class="gallery-caption">Space Race achievements</div>
+          </div>
+          <div class="gallery-item">
+            <img src="reagan_gorbachev.jpg" alt="Cold War Era" class="gallery-image">
+            <div class="gallery-caption">Reagan and Gorbachev meeting</div>
+          </div>
+          <div class="gallery-item">
+            <img src="checkpoint_charlie.jpg" alt="Cold War Era" class="gallery-image">
+            <div class="gallery-caption">Checkpoint Charlie in Berlin</div>
+          </div>
+          <div class="gallery-item">
+            <img src="fall_of_wall.jpg" alt="Cold War Era" class="gallery-image">
+            <div class="gallery-caption">Fall of the Berlin Wall, 1989</div>
+          </div>
+        </div>
+      </div>
+    </div>    <footer>
+      <p>&copy; 2025 | THE COLD WAR | Created by Orlando David Osorio</p>
+    </footer>
+  </main>
+  <script>
+    // Cold War Timeline Events
+    const coldWarEvents = {
+      1945: "World War II ends, setting the stage for tensions between the United States and Soviet Union",
+      1947: "Truman Doctrine announced, pledging American support for democratic nations against communism",
+      1948: "Berlin Blockade begins as Soviets block Western access to West Berlin",
+      1949: "NATO formed; Soviet Union tests its first atomic bomb",
+      1950: "Korean War begins, the first major proxy conflict of the Cold War",
+      1953: "Death of Stalin; Korean War armistice signed",
+      1955: "Warsaw Pact formed by communist states as a counterbalance to NATO",
+      1956: "Hungarian Revolution crushed by Soviet forces",
+      1957: "Sputnik launched, beginning the Space Race",
+      1959: "Cuban Revolution; Fidel Castro takes power",
+      1961: "Berlin Wall constructed, physically dividing East and West Berlin",
+      1962: "Cuban Missile Crisis brings the world to the brink of nuclear war",
+      1963: "Limited Nuclear Test Ban Treaty signed; Kennedy assassination",
+      1965: "U.S. begins major military deployment in Vietnam",
+      1968: "Prague Spring crushed by Warsaw Pact invasion of Czechoslovakia",
+      1969: "First Moon landing by the United States",
+      1972: "SALT I treaty signed; Nixon visits China",
+      1975: "Fall of Saigon marks the end of the Vietnam War",
+      1979: "Soviet Union invades Afghanistan; SALT II treaty signed but never ratified",
+      1980: "U.S. boycotts Moscow Olympics in protest of Soviet invasion of Afghanistan",
+      1983: "Reagan announces Strategic Defense Initiative ('Star Wars'); Soviet Union shoots down Korean Air Lines Flight 007",
+      1985: "Mikhail Gorbachev becomes leader of Soviet Union; begins glasnost and perestroika reforms",
+      1986: "Reagan and Gorbachev meet at Reykjavik Summit",
+      1987: "INF Treaty eliminates intermediate-range nuclear missiles",
+      1989: "Fall of the Berlin Wall; democratic revolutions sweep Eastern Europe",
+      1990: "Germany reunifies; Cold War begins to wind down",
+      1991: "Warsaw Pact dissolves; Soviet Union collapses, marking the end of the Cold War"
+    };
+  
+    // Add tab functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+      const tabIndicator = document.querySelector('.tab-indicator');
+      
+      // Function to position the indicator
+      function positionIndicator(activeTab) {
+        const tabWidth = activeTab.offsetWidth;
+        const tabLeft = activeTab.offsetLeft;
+        tabIndicator.style.width = tabWidth + 'px';
+        tabIndicator.style.left = tabLeft + 'px';
+      }
+      
+      // Initialize indicator position
+      positionIndicator(document.querySelector('.tab-button.active'));
+      
+      // Set up tab switching
+      tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons and panes
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          tabPanes.forEach(pane => pane.classList.remove('active'));
+          
+          // Add active class to current button and corresponding pane
+          this.classList.add('active');
+          const tabId = this.getAttribute('data-tab');
+          document.getElementById(tabId).classList.add('active');
+          
+          // Update indicator position
+          positionIndicator(this);
+        });
+      });
+      
+      // Make quotes glow when clicked
+      const quotes = document.querySelectorAll('.quote');
+      quotes.forEach(quote => {
+        quote.addEventListener('click', function() {
+          // Randomly choose between Soviet red and American blue glow
+          const isRed = Math.random() > 0.5;
+          if (isRed) {
+            this.style.textShadow = '0 0 10px rgba(204, 0, 0, 1), 0 0 20px rgba(204, 0, 0, 0.8)';
+            this.style.color = 'var(--soviet-red)';
+          } else {
+            this.style.textShadow = '0 0 10px rgba(0, 40, 104, 1), 0 0 20px rgba(0, 40, 104, 0.8)';
+            this.style.color = 'var(--american-blue)';
+          }
+            setTimeout(() => {
+            this.style.textShadow = '';
+            this.style.color = 'var(--american-blue)';
+          }, 1500);
+        });
+      });
+      
+      // Make tension meter animate faster on hover
+      const tensionMeter = document.querySelector('.lunar-phase');
+      tensionMeter.addEventListener('mouseover', function() {
+        this.style.animationDuration = '1s';
+      });
+      tensionMeter.addEventListener('mouseout', function() {
+        this.style.animationDuration = '4s';
+      });
+      
+      // Image gallery zoom effect
+      const galleryImages = document.querySelectorAll('.gallery-image');
+      galleryImages.forEach(image => {
+        image.addEventListener('click', function() {
+          this.classList.toggle('zoomed');
+        });
+      });
+        // Timeline slider functionality
+      const yearSlider = document.getElementById('year-slider');
+      const eventYear = document.getElementById('event-year');
+      const eventDescription = document.getElementById('event-description');
+      
+      if(yearSlider) {
+        yearSlider.addEventListener('input', function() {
+          const year = parseInt(this.value);
+          eventYear.textContent = year;
+          
+          // Find the closest event
+          if(coldWarEvents[year]) {
+            eventDescription.textContent = coldWarEvents[year];
+          } else {
+            // Find closest year
+            const availableYears = Object.keys(coldWarEvents).map(Number);
+            const closestYear = availableYears.reduce((prev, curr) => 
+              Math.abs(curr - year) < Math.abs(prev - year) ? curr : prev
+            );
+            eventDescription.textContent = `${coldWarEvents[closestYear]} (${closestYear})`;
+          }
+        });
+        
+        // Make markers clickable
+        const markers = document.querySelectorAll('.marker');
+        markers.forEach(marker => {
+          marker.addEventListener('click', function() {
+            const year = this.title.split(':')[0];
+            yearSlider.value = year;
+            eventYear.textContent = year;
+            eventDescription.textContent = coldWarEvents[year] || this.title.split(':')[1].trim();
+            // Trigger a change event
+            const event = new Event('input');
+            yearSlider.dispatchEvent(event);
+          });
+        });
+      }
+      
+      // Propaganda toggle functionality
+      const propagandaBtns = document.querySelectorAll('.propaganda-btn');
+      const propagandaSides = document.querySelectorAll('.propaganda-side');
+      
+      propagandaBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all buttons
+          propagandaBtns.forEach(b => b.classList.remove('active'));
+          
+          // Add active class to current button
+          this.classList.add('active');
+          
+          // Show the corresponding side
+          const side = this.getAttribute('data-side');
+          propagandaSides.forEach(s => s.classList.remove('active'));
+          document.getElementById(`${side}-propaganda`).classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

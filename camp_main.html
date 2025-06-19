@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The History and Impact of Concentration Camps</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1a365d;
+      min-height: 100vh;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated particles background - cambiado a tonos azules */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+          radial-gradient(circle at 20% 20%, rgba(26, 54, 93, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(66, 153, 225, 0.08) 0%, transparent 50%),
+          radial-gradient(circle at 40% 60%, rgba(26, 54, 93, 0.05) 0%, transparent 50%);
+      animation: drift 20s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(1deg); }
+      66% { transform: translate(-20px, 20px) rotate(-1deg); }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #2b6cb0 0%, #1a365d 50%, #2c5282 100%);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(26, 54, 93, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, 
+          transparent 30%, 
+          rgba(128, 128, 128, 0.1) 50%, 
+          transparent 70%);
+      animation: shimmer 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: white;
+      animation: titleGlow 3s ease-in-out infinite alternate;
+      -webkit-text-fill-color: white;
+    }
+
+    @keyframes titleGlow {
+      0% { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3)); }
+      100% { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6)); }
+    }
+
+    .header .subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+      font-weight: 300;
+      color: #d0d0d0;
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header .authors {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ebf8ff;
+      font-family: 'Playfair Display', serif;
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 0 1rem;
+      animation: slideInUp 0.8s ease-out;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 16px rgba(26, 54, 93, 0.1);
+      border: 1px solid rgba(66, 153, 225, 0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, 
+          rgba(66, 153, 225, 0.2), 
+          rgba(49, 130, 206, 0.2), 
+          rgba(26, 54, 93, 0.2));
+      border-radius: 12px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(26, 54, 93, 0.15);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .audio-player {
+      background: linear-gradient(135deg, #2b6cb0 0%, #1a365d 100%);
+      color: white;
+      animation: pulseGlow 4s ease-in-out infinite;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 4px 16px rgba(64, 64, 64, 0.3); }
+      50% { box-shadow: 0 8px 32px rgba(64, 64, 64, 0.5); }
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-title .icon {
+      margin-right: 0.8rem;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      animation: iconBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    .audio-controls {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .audio-btn {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: white;
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      min-width: 70px;
+      font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .audio-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      transform: translate(-50%, -50%);
+    }
+
+    .audio-btn:hover::before {
+      width: 100%;
+      height: 100%;
+    }
+
+    .audio-btn:hover {
+      background: rgba(255,255,255,0.3);
+      border-color: rgba(255,255,255,0.6);
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    .audio-progress {
+      width: 100%;
+      height: 6px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .audio-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,1) 100%);
+      width: 0%;
+      transition: width 0.2s ease;
+      border-radius: 3px;
+      animation: progressPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes progressPulse {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+
+    .audio-time-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .audio-time {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+      font-family: 'Inter', monospace;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #2b6cb0;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(66, 153, 225, 0.8) 0%, rgba(66, 153, 225, 0.2) 100%);
+      border-radius: 1px;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      color: #2d3748;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    img:hover {
+      transform: scale(1.03) rotateY(2deg);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+      filter: brightness(1.05) contrast(1.05);
+    }
+
+    /* Focus styles for accessibility */
+    .audio-btn:focus {
+      outline: 2px solid #b0b0b0;
+      outline-offset: 2px;
+    }    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .container {
+      padding: 1.5rem;
+      }
+
+      .header {
+      padding: 2rem 1.5rem;
+      }
+
+      .header h1 {
+      font-size: 1.8rem;
+      }
+
+      .card {
+      padding: 1.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+      padding: 1rem;
+      }
+
+      .header {
+      padding: 1.5rem;
+      }
+
+      .header h1 {
+      font-size: 1.6rem;
+      }
+
+      .card {
+      padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header h1 {
+      font-size: 1.4rem;
+      }
+
+      .header .subtitle {
+      font-size: 0.9rem;
+      }
+
+      .header .authors {
+      font-size: 1rem;
+      }
+
+      .card {
+      padding: 0.8rem;
+      }
+
+      .audio-btn {
+      font-size: 0.8rem;
+      padding: 0.5rem 0.8rem;
+      }
+
+      .audio-time {
+      font-size: 0.7rem;
+      }
+    }.back-btn {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(66, 153, 225, 0.2);
+        color: white;
+        border: 1px solid rgba(66, 153, 225, 0.4);
+        border-radius: 8px;
+        padding: 0.6rem 1.2rem;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        display: inline-block;
+        backdrop-filter: blur(10px);
+        z-index: 10;
+    }
+
+    .back-btn:hover {
+        background: rgba(66, 153, 225, 0.4);
+        border-color: rgba(66, 153, 225, 0.6);
+        transform: translateY(-50%) translateY(-2px) scale(1.05);
+        box-shadow: 0 8px 20px rgba(66, 153, 225, 0.3);
+    }    /* Responsive adjustments for back button */
+    @media (max-width: 768px) {
+        .header-content {
+            position: relative;
+            padding-top: 3rem;
+        }
+        
+        .back-btn {
+            position: absolute;
+            left: 50%;
+            top: 0.5rem;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            padding: 0.5rem 0.8rem;
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-50%) translateY(-2px) scale(1.05);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header-content {
+            padding-top: 3.5rem;
+        }
+        
+        .back-btn {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.7rem;
+            left: 50%;
+            top: 0.5rem;
+            transform: translateX(-50%);
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-50%) translateY(-2px) scale(1.05);
+        }
+    }
+
+    /* Quitar la línea semigris debajo de "Audio Narration" */
+    .section-title::after {
+      display: none;
+    }
+
+    .audio-btn {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: white;
+    }
+
+    .audio-btn:hover {
+      background: rgba(255,255,255,0.3);
+      border-color: rgba(255,255,255,0.6);
+    }
+  </style>
+</head>
+<body>
+   <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <button class="back-btn" onclick="window.location.href='../index.html'">
+                ← Back to Home
+            </button>
+            <h1>Concentration Camp History Blog</h1>
+            <div class="subtitle">The reading of a tragic event</div>
+            <div class="authors">Andres Burgos</div>
+        </div>
+    </header>
+  <main class="container">
+    <!-- Audio Player -->
+    <section class="card audio-player">
+      <h2 class="section-title">
+        <span class="icon">🎵</span>
+        Audio Narration
+      </h2>
+      <div class="audio-controls">
+        <button class="audio-btn" onclick="playAudio()" aria-label="Play audio">Play</button>
+        <button class="audio-btn" onclick="pauseAudio()" aria-label="Pause audio">Pause</button>
+        <button class="audio-btn" onclick="stopAudio()" aria-label="Stop audio">Stop</button>
+      </div>
+      <div class="audio-progress">
+        <div class="audio-progress-fill" id="audioProgress"></div>
+      </div>
+      <div class="audio-time-container">
+        <span class="audio-time" id="audioTimeRemaining">--:--</span>
+      </div>
+      <audio id="backgroundAudio">
+        <source src="camp.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+    </section>
+
+    <!-- Content -->
+    <section class="card">
+      <p>Concentration camps were dark and tragic places in history where millions of people were imprisoned under inhumane conditions. These camps appeared in different parts of the world, but they became widely known during World War II, when Nazi Germany established a large system of camps to detain and persecute Jews, political prisoners, Romani people, and others.</p>
+
+      <h2>Origins and Purpose</h2>
+      <p>The concept of concentration camps began earlier, with some of the first camps used by the British during the Boer War in South Africa. However, the most infamous camps were built during the 1930s and 1940s by the Nazis. Their purpose was to isolate, exploit, and exterminate people who were considered enemies or threats.</p>
+
+      <h2>Life Inside the Camps</h2>
+      <p>Prisoners were brought to the camps in overcrowded trains. Many arrived tired, hungry, and scared. Upon arrival, the Nazis separated families and assigned prisoners to forced labor or immediate execution.</p>
+
+      <p>Conditions inside the camps were horrific. People lived in cramped barracks without enough food or clean water. Disease spread quickly, and medical care was almost nonexistent. Thousands died every day from starvation, exhaustion, or abuse.</p>
+
+      <img src="camp-1.jpg" alt="Train transports at Auschwitz">
+
+      <h2>Acts of Resistance and Survival</h2>
+      <p>Despite the cruelty, some prisoners managed to resist. They organized secret groups, planned escapes, and supported one another emotionally. Some brave individuals escaped and alerted the world about the atrocities happening inside the camps.</p>
+
+      <p>Survivors carried the memory of these experiences for the rest of their lives. They shared their testimonies through books, interviews, and speeches, ensuring the world would never forget what happened.</p>
+
+      <img src="camp-2.jpg" alt="Barracks inside camp">
+
+      <h2>Liberation and Aftermath</h2>
+      <p>In 1945, Allied forces liberated many camps. Soldiers found thousands of emaciated prisoners and witnessed the horrors firsthand. After liberation, the survivors began the long journey of recovery, while the world tried to understand the full scale of the tragedy.</p>
+
+      <img src="camp-3.jpg" alt="Liberation of prisoners">
+
+        <h2>Legacy and Lessons</h2>
+      <p>The Nuremberg Trials held many Nazi leaders accountable for war crimes. The history of concentration camps became a crucial lesson on the dangers of hatred, discrimination, and totalitarian regimes.</p>
+
+      <img src="camp-4.jpg" alt="Liberation by Allied forces">
+
+      <h2>Why Remember?</h2>
+      <p>Remembering concentration camps helps us honor the victims and prevent history from repeating itself. We learned that silence and indifference allowed such cruelty to grow. Education and awareness promote peace, tolerance, and human rights worldwide.</p>
+
+      <img src="camp-5.jpg" alt="Nuremberg Trials courtroom">
+    </section>
+  </main>
+
+  <script>
+    // Audio functions
+    const audio = document.getElementById('backgroundAudio');
+    const progressBar = document.getElementById('audioProgress');
+
+    function playAudio() {
+      audio.play().catch(e => console.log('Audio play error:', e));
+    }
+
+    function pauseAudio() {
+      audio.pause();
+    }
+
+    function stopAudio() {
+      audio.pause();
+      audio.currentTime = 0;
+      progressBar.style.width = '0%';
+      document.getElementById('audioTimeRemaining').textContent = '--:--';
+    }
+
+    // Audio progress tracking
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = progress + '%';
+        
+        const timeRemaining = audio.duration - audio.currentTime;
+        const minutes = Math.floor(timeRemaining / 60);
+        const seconds = Math.floor(timeRemaining % 60);
+        const timeRemainingElement = document.getElementById('audioTimeRemaining');
+        timeRemainingElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('audioProgress').style.width = '0%';
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      if (audio.duration) {
+        const minutes = Math.floor(audio.duration / 60);
+        const seconds = Math.floor(audio.duration % 60);
+        document.getElementById('audioTimeRemaining').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+      if (e.key === ' ') {
+        e.preventDefault();
+        if (audio.paused) {
+          playAudio();
+        } else {
+          pauseAudio();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
