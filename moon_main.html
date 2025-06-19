@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Moon Landing</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0f1419;
+  color: #f8f9fa;
+  min-height: 100vh;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated particles background - estilo patriótico lunar */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+      radial-gradient(circle at 20% 20%, rgba(220, 53, 69, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(13, 110, 253, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 40% 60%, rgba(248, 249, 250, 0.03) 0%, transparent 50%);
+  animation: drift 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, -30px) rotate(1deg); }
+  66% { transform: translate(-20px, 20px) rotate(-1deg); }
+}
+
+.header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #dc2626 50%, #1e40af 100%);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(220, 53, 69, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, 
+      transparent 30%, 
+      rgba(248, 249, 250, 0.1) 50%, 
+      transparent 70%);
+  animation: shimmer 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+  -webkit-text-fill-color: white;
+  text-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+}
+
+@keyframes titleGlow {
+  0% { filter: drop-shadow(0 0 5px rgba(248, 249, 250, 0.4)); }
+  100% { filter: drop-shadow(0 0 15px rgba(13, 110, 253, 0.6)); }
+}
+
+.header .subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  color: #e9ecef;
+  animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header .authors {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f8f9fa;
+  font-family: 'Playfair Display', serif;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 0 1rem;
+  animation: slideInUp 0.8s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  background: linear-gradient(145deg, #1a2332 0%, #0f1419 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(13, 110, 253, 0.15);
+  border: 1px solid rgba(220, 53, 69, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+      rgba(220, 53, 69, 0.3), 
+      rgba(248, 249, 250, 0.2), 
+      rgba(13, 110, 253, 0.3));
+  border-radius: 12px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(220, 53, 69, 0.2);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.audio-player {
+  background: linear-gradient(135deg, #dc2626 0%, #1e40af 100%);
+  color: white;
+  animation: pulseGlow 4s ease-in-out infinite;
+  margin-bottom: 2rem;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 4px 16px rgba(220, 53, 69, 0.4); }
+  50% { box-shadow: 0 8px 32px rgba(13, 110, 253, 0.6); }
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-title .icon {
+  margin-right: 0.8rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(248, 249, 250, 0.2);
+  border-radius: 50%;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.audio-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.audio-btn {
+  background: rgba(248, 249, 250, 0.15);
+  border: 1px solid rgba(248, 249, 250, 0.3);
+  color: white;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 70px;
+  font-size: 0.9rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.audio-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(220, 53, 69, 0.3);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.audio-btn:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.audio-btn:hover {
+  background: rgba(220, 53, 69, 0.2);
+  border-color: rgba(248, 249, 250, 0.5);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.audio-progress {
+  width: 100%;
+  height: 6px;
+  background: rgba(248, 249, 250, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.audio-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(248, 249, 250, 0.8) 0%, rgba(220, 53, 69, 0.9) 100%);
+  width: 0%;
+  transition: width 0.2s ease;
+  border-radius: 3px;
+  animation: progressPulse 2s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.audio-time-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.audio-time {
+  font-size: 0.8rem;
+  color: rgba(248, 249, 250, 0.9);
+  font-weight: 600;
+  font-family: 'Inter', monospace;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #dc2626;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(13, 110, 253, 0.8) 0%, rgba(13, 110, 253, 0.2) 100%);
+  border-radius: 1px;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: #e9ecef;
+  text-align: justify;
+}
+
+img {
+  width: 100%;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid rgba(220, 53, 69, 0.1);
+}
+
+img:hover {
+  transform: scale(1.03) rotateY(2deg);
+  box-shadow: 0 16px 48px rgba(13, 110, 253, 0.3);
+  filter: brightness(1.05) contrast(1.05);
+  border-color: rgba(220, 53, 69, 0.3);
+}
+
+/* Focus styles for accessibility */
+.audio-btn:focus {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {  .back-btn {
+    position: static !important;
+    transform: none !important;
+    display: block;
+    margin: 0 auto 1rem auto;
+    width: fit-content;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    padding: clamp(0.5rem, 2vw, 0.6rem) clamp(1rem, 3vw, 1.2rem);
+  }
+  
+  .back-btn:hover {
+    transform: translateY(-3px) scale(1.08) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .header {
+    padding: 1.5rem;
+  }
+  
+  .header h1 {
+    font-size: 1.6rem;
+  }
+  
+  .card {
+    padding: 1rem;
+  }
+}
+
+.back-btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(13, 110, 253, 0.2);
+    color: white;
+    border: 1px solid rgba(220, 53, 69, 0.4);
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-block;
+    backdrop-filter: blur(10px);
+}
+
+.back-btn:hover {
+    background: rgba(220, 53, 69, 0.3);
+    border-color: rgba(13, 110, 253, 0.6);
+    transform: translateY(-50%) translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(220, 53, 69, 0.4);
+}
+
+/* Quitar la línea semigris debajo de "Audio Narration" */
+.section-title::after {
+  display: none;
+}
+
+.audio-btn {
+  background: rgba(248, 249, 250, 0.15);
+  border: 1px solid rgba(248, 249, 250, 0.3);
+  color: white;
+}
+
+.audio-btn:hover {
+  background: rgba(220, 53, 69, 0.2);
+  border-color: rgba(248, 249, 250, 0.5);
+}
+
+strong {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+em {
+  color: #1e40af;
+  font-style: italic;
+}
+  </style>
+</head>
+<body>
+   <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <button class="back-btn" onclick="window.location.href='../index.html'">
+                ← Back to Home
+            </button>
+            <h1>The Moon Landing</h1>
+            <div class="subtitle">Let's travel to the moon, a capitalist victory</div>
+            <div class="authors">Cristina Herrera, Kevin Vega & Keiner Ricardo</div>
+        </div>
+    </header>
+<main class="container">
+    <!-- Audio Player -->
+    <section class="card audio-player">
+        <h2 class="section-title">
+            <span class="icon">🎵</span>
+            Audio Narration
+        </h2>
+        <div class="audio-controls">
+            <button class="audio-btn" onclick="playAudio()" aria-label="Play audio">Play</button>
+            <button class="audio-btn" onclick="pauseAudio()" aria-label="Pause audio">Pause</button>
+            <button class="audio-btn" onclick="stopAudio()" aria-label="Stop audio">Stop</button>
+        </div>
+        <div class="audio-progress">
+            <div class="audio-progress-fill" id="audioProgress"></div>
+        </div>
+        <div class="audio-time-container">
+            <span class="audio-time" id="audioTimeRemaining">--:--</span>
+        </div>
+        <audio id="backgroundAudio">
+            <source src="moon.MP3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </section>
+
+    <!-- Content -->
+    <section class="card">
+        <img src="moon.jpg" alt="Infographic explaining the financial crisis" class="infographic">
+    </section>
+</main>
+
+  <script>
+    // Audio functions
+    const audio = document.getElementById('backgroundAudio');
+    const progressBar = document.getElementById('audioProgress');
+
+    function playAudio() {
+      audio.play().catch(e => console.log('Audio play error:', e));
+    }
+
+    function pauseAudio() {
+      audio.pause();
+    }
+
+    function stopAudio() {
+      audio.pause();
+      audio.currentTime = 0;
+      progressBar.style.width = '0%';
+      document.getElementById('audioTimeRemaining').textContent = '--:--';
+    }
+
+    // Audio progress tracking
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = progress + '%';
+        
+        const timeRemaining = audio.duration - audio.currentTime;
+        const minutes = Math.floor(timeRemaining / 60);
+        const seconds = Math.floor(timeRemaining % 60);
+        const timeRemainingElement = document.getElementById('audioTimeRemaining');
+        timeRemainingElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('audioProgress').style.width = '0%';
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      if (audio.duration) {
+        const minutes = Math.floor(audio.duration / 60);
+        const seconds = Math.floor(audio.duration % 60);
+        document.getElementById('audioTimeRemaining').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+      if (e.key === ' ') {
+        e.preventDefault();
+        if (audio.paused) {
+          playAudio();
+        } else {
+          pauseAudio();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
